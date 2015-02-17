@@ -13,6 +13,11 @@
 		DE29B9A11A885BF300A2DC2E /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DE29B9A01A885BF300A2DC2E /* Images.xcassets */; };
 		DE29B9A41A885BF300A2DC2E /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = DE29B9A21A885BF300A2DC2E /* LaunchScreen.xib */; };
 		DE29B9B01A885BF300A2DC2E /* asgTests.m in Sources */ = {isa = PBXBuildFile; fileRef = DE29B9AF1A885BF300A2DC2E /* asgTests.m */; };
+		DE89C7981A9387D100B1AB26 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE89C7931A9387D100B1AB26 /* Bolts.framework */; };
+		DE89C7991A9387D100B1AB26 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE89C7941A9387D100B1AB26 /* Parse.framework */; };
+		DE89C79A1A9387D100B1AB26 /* ParseCrashReporting.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE89C7951A9387D100B1AB26 /* ParseCrashReporting.framework */; };
+		DE89C79B1A9387D100B1AB26 /* ParseFacebookUtils.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE89C7961A9387D100B1AB26 /* ParseFacebookUtils.framework */; };
+		DE89C79C1A9387D100B1AB26 /* ParseUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE89C7971A9387D100B1AB26 /* ParseUI.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,6 +42,11 @@
 		DE29B9A91A885BF300A2DC2E /* asgTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = asgTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		DE29B9AE1A885BF300A2DC2E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DE29B9AF1A885BF300A2DC2E /* asgTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = asgTests.m; sourceTree = "<group>"; };
+		DE89C7931A9387D100B1AB26 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
+		DE89C7941A9387D100B1AB26 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
+		DE89C7951A9387D100B1AB26 /* ParseCrashReporting.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseCrashReporting.framework; sourceTree = "<group>"; };
+		DE89C7961A9387D100B1AB26 /* ParseFacebookUtils.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseFacebookUtils.framework; sourceTree = "<group>"; };
+		DE89C7971A9387D100B1AB26 /* ParseUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseUI.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -44,6 +54,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DE89C7991A9387D100B1AB26 /* Parse.framework in Frameworks */,
+				DE89C79A1A9387D100B1AB26 /* ParseCrashReporting.framework in Frameworks */,
+				DE89C79C1A9387D100B1AB26 /* ParseUI.framework in Frameworks */,
+				DE89C79B1A9387D100B1AB26 /* ParseFacebookUtils.framework in Frameworks */,
+				DE89C7981A9387D100B1AB26 /* Bolts.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -62,6 +77,7 @@
 			children = (
 				DE29B98F1A885BF200A2DC2E /* asg */,
 				DE29B9AC1A885BF300A2DC2E /* asgTests */,
+				DE89C7921A9387B100B1AB26 /* Frameworks */,
 				DE29B98E1A885BF200A2DC2E /* Products */,
 			);
 			sourceTree = "<group>";
@@ -112,6 +128,18 @@
 				DE29B9AE1A885BF300A2DC2E /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		DE89C7921A9387B100B1AB26 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				DE89C7931A9387D100B1AB26 /* Bolts.framework */,
+				DE89C7941A9387D100B1AB26 /* Parse.framework */,
+				DE89C7951A9387D100B1AB26 /* ParseCrashReporting.framework */,
+				DE89C7961A9387D100B1AB26 /* ParseFacebookUtils.framework */,
+				DE89C7971A9387D100B1AB26 /* ParseUI.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -337,6 +365,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = asg/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -347,6 +379,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = asg/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
