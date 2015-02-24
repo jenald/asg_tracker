@@ -13,6 +13,7 @@
 @dynamic idNumber;
 @dynamic phoneNumber;
 @dynamic user;
+@dynamic manager;
 @dynamic position;
 
 + (NSString *)parseClassName {

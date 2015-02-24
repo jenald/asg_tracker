@@ -34,6 +34,7 @@
     NSArray *positions;
     NSArray *managers;
     Position *selectedPosition;
+    PFUser *selectedManager;
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -44,13 +45,21 @@
     [positionQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         positions = [NSArray arrayWithArray:objects];
     }];
-    PFQuery *userInfoQuery = [UserInfo query];
-    [userInfoQuery whereKey:@"position.positionId" equalTo:@"1"];
-    [userInfoQuery includeKey:@"position"];
     
-    [userInfoQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-        managers = [NSArray arrayWithArray:objects];
+    
+    PFQuery *managersQuery = [Position query];
+    [managersQuery whereKey:@"positionId" equalTo:@(1)];
+    [managersQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if (objects.count > 0) {
+            PFQuery *userInfoQuery = [UserInfo query];
+            [userInfoQuery whereKey:@"position" equalTo:objects[0]];
+            [userInfoQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+                managers = [NSArray arrayWithArray:objects];
+            }];
+        }
     }];
+    
+    
 }
 
 #pragma mark - Private Methods
@@ -62,6 +71,10 @@
     userInfo.phoneNumber = self.phoneNumberText.text;
     userInfo.user = user;
     userInfo.position = selectedPosition;
+    
+    if (selectedManager) {
+        userInfo.manager = selectedManager;
+    }
     
     [userInfo saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
@@ -127,7 +140,15 @@
 
 - (void)textFieldDidBeginEditing:(UITextField *)textField {
     if ([textField isEqual:self.managerText]) {
-        	
+        NSArray *arrayOfManagers = [managers valueForKeyPath:@"fullName"];
+        [ActionSheetStringPicker showPickerWithTitle:@"Select Manager" rows:arrayOfManagers initialSelection:0 doneBlock:^(ActionSheetStringPicker *picker, NSInteger selectedIndex, id selectedValue) {
+            UserInfo *managerInfo = managers[selectedIndex];
+            selectedManager = managerInfo.user;
+            textField.text = managerInfo.fullName;
+        } cancelBlock:^(ActionSheetStringPicker *picker) {
+            
+        } origin:textField];
+        
     } else if ([textField isEqual:self.roleText]) {
         NSArray *arrayOfRoles = [positions valueForKeyPath:@"name"];
         [ActionSheetStringPicker showPickerWithTitle:@"Select Role" rows:arrayOfRoles initialSelection:0 doneBlock:^(ActionSheetStringPicker *picker, NSInteger selectedIndex, id selectedValue) {

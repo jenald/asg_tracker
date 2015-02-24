@@ -17,6 +17,7 @@
 @property (retain) NSString *idNumber;
 @property (retain) NSString *phoneNumber;
 @property (retain) PFUser *user;
+@property (retain) PFUser *manager;
 @property (retain) Position *position;
 
 @end
