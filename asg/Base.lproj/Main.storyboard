@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="c7b-jM-6Vy">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="LA9-aJ-Dcs">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Login View Controller-->
         <scene sceneID="UjI-Ux-B0j">
             <objects>
-                <viewController id="LA9-aJ-Dcs" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="loginVC" id="LA9-aJ-Dcs" customClass="ASLoginViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Lat-Cw-ysu"/>
                         <viewControllerLayoutGuide type="bottom" id="Fmm-dm-1dr"/>
@@ -51,6 +51,9 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="didTapRegisterButton:" destination="LA9-aJ-Dcs" eventType="touchUpInside" id="WO7-tp-L8G"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -81,10 +84,10 @@
             </objects>
             <point key="canvasLocation" x="-721.5" y="-0.5"/>
         </scene>
-        <!--View Controller-->
+        <!--Sign Up View Controller-->
         <scene sceneID="6Ev-eT-yCp">
             <objects>
-                <viewController id="T3l-7S-VJz" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="signUpVC" id="T3l-7S-VJz" customClass="ASSignUpViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="DTx-Nd-wq5"/>
                         <viewControllerLayoutGuide type="bottom" id="aWz-5v-Xco"/>
@@ -109,7 +112,7 @@
                                 <rect key="frame" x="133" y="57" width="206" height="18"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2DY-Dy-eqt">
                                 <rect key="frame" x="36" y="94" width="303" height="43"/>
@@ -118,6 +121,9 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="didTapRegisterButton:" destination="T3l-7S-VJz" eventType="touchUpInside" id="FcE-vM-vx2"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -137,16 +143,19 @@
                     </view>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <outlet property="emailAddressText" destination="Xdp-mO-49p" id="joD-I7-dGz"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Chv-7m-S1a" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-721.5" y="773.5"/>
         </scene>
-        <!--Table View Controller-->
+        <!--Signup Details Table View Controller-->
         <scene sceneID="iQP-h3-DDJ">
             <objects>
-                <tableViewController id="c7b-jM-6Vy" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="E22-8c-fBU">
+                <tableViewController storyboardIdentifier="signUpDetailsVC" id="c7b-jM-6Vy" customClass="ASSignupDetailsTableViewController" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="E22-8c-fBU">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -248,6 +257,9 @@
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
+                                                    <connections>
+                                                        <outlet property="delegate" destination="c7b-jM-6Vy" id="DAI-T3-keg"/>
+                                                    </connections>
                                                 </textField>
                                             </subviews>
                                             <constraints>
@@ -277,6 +289,9 @@
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
+                                                    <connections>
+                                                        <outlet property="delegate" destination="c7b-jM-6Vy" id="qQL-SA-bK9"/>
+                                                    </connections>
                                                 </textField>
                                             </subviews>
                                             <constraints>
@@ -381,7 +396,7 @@
                                                         <constraint firstAttribute="height" constant="30" id="Re1-GI-Ifa"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits"/>
+                                                    <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                                 </textField>
                                             </subviews>
                                             <constraints>
@@ -410,7 +425,7 @@
                                                         <constraint firstAttribute="height" constant="30" id="PTZ-Wb-q4v"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits"/>
+                                                    <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                                 </textField>
                                             </subviews>
                                             <constraints>
@@ -494,6 +509,9 @@
                                                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
+                                                    <connections>
+                                                        <action selector="didTapRegisterButton:" destination="c7b-jM-6Vy" eventType="touchUpInside" id="0fE-pE-B8s"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                             <constraints>
@@ -512,15 +530,25 @@
                     </tableView>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <outlet property="confirmPasswordText" destination="oLr-JR-vsF" id="5fk-wi-YJn"/>
+                        <outlet property="emailAddressText" destination="5ba-SG-IEN" id="zLl-sG-Jtb"/>
+                        <outlet property="idNumberText" destination="5VI-eP-hbJ" id="aAd-5c-Cde"/>
+                        <outlet property="managerText" destination="ZbN-bd-XRB" id="SMl-zS-a0g"/>
+                        <outlet property="nameText" destination="E1A-Us-OKQ" id="DgI-59-MZQ"/>
+                        <outlet property="passwordText" destination="qEp-ym-CqJ" id="pBL-0r-Dfd"/>
+                        <outlet property="phoneNumberText" destination="eL9-Eu-URT" id="Otn-Qw-Jbb"/>
+                        <outlet property="roleText" destination="ev0-JH-SJJ" id="JaR-RB-fuU"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cwf-9l-g9z" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-265.5" y="773.5"/>
         </scene>
-        <!--View Controller-->
+        <!--Sign Up Success View Controller-->
         <scene sceneID="VJT-lR-Kdc">
             <objects>
-                <viewController id="n2R-bV-twa" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="signUpSuccessVC" id="n2R-bV-twa" customClass="ASSignUpSuccessViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="ec6-KV-0F6"/>
                         <viewControllerLayoutGuide type="bottom" id="WLt-Jy-JUE"/>
@@ -572,6 +600,9 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="didTapDoneButton:" destination="n2R-bV-twa" eventType="touchUpInside" id="euZ-lY-Dph"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -597,6 +628,10 @@
                     </view>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <outlet property="assignedUserIdLabel" destination="qhP-ml-JS9" id="yL2-6S-EhV"/>
+                        <outlet property="assignedUserNameLabel" destination="F3u-6C-gja" id="Hcg-Nc-awO"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pK3-Sn-2FW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
