@@ -7,6 +7,7 @@
 //
 
 #import "UserInfo.h"
+#import <Parse/PFSubclassing.h>
 
 @implementation UserInfo
 @dynamic fullName;

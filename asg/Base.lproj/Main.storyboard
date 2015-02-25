@@ -545,6 +545,65 @@
             </objects>
             <point key="canvasLocation" x="-265.5" y="773.5"/>
         </scene>
+        <!--Item 2-->
+        <scene sceneID="WLL-31-c16">
+            <objects>
+                <viewController id="WHP-Uh-eak" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="W76-FR-VPN"/>
+                        <viewControllerLayoutGuide type="bottom" id="rXJ-Rb-8Ev"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="4f0-QJ-NLf">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="554"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Item 2" id="riQ-Mx-6zh"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="g67-oG-Qmj" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="638.5" y="-0.5"/>
+        </scene>
+        <!--Item 1-->
+        <scene sceneID="DPO-Ad-x0b">
+            <objects>
+                <viewController storyboardIdentifier="worksiteVC" id="d0K-Ik-4Hh" customClass="ASWorksiteViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="3TD-JA-weg"/>
+                        <viewControllerLayoutGuide type="bottom" id="XTc-eE-3XX"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="0Dp-CL-oDT">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="554"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Item 1" id="KJH-uC-8vq"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="oXt-YY-thS" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="192.5" y="-0.5"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="Fbq-d9-9Wk">
+            <objects>
+                <tabBarController id="nto-Y4-8Qj" sceneMemberID="viewController">
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics" translucent="NO"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" translucent="NO" id="0f4-c8-T3C">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="d0K-Ik-4Hh" kind="relationship" relationship="viewControllers" id="k0E-re-nMg"/>
+                        <segue destination="WHP-Uh-eak" kind="relationship" relationship="viewControllers" id="Yww-XH-1zF"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mQ6-5B-77U" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-265.5" y="-0.5"/>
+        </scene>
         <!--Sign Up Success View Controller-->
         <scene sceneID="VJT-lR-Kdc">
             <objects>

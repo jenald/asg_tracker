@@ -46,7 +46,6 @@
         positions = [NSArray arrayWithArray:objects];
     }];
     
-    
     PFQuery *managersQuery = [Position query];
     [managersQuery whereKey:@"positionId" equalTo:@(1)];
     [managersQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
@@ -58,8 +57,6 @@
             }];
         }
     }];
-    
-    
 }
 
 #pragma mark - Private Methods
@@ -71,11 +68,9 @@
     userInfo.phoneNumber = self.phoneNumberText.text;
     userInfo.user = user;
     userInfo.position = selectedPosition;
-    
     if (selectedManager) {
         userInfo.manager = selectedManager;
     }
-    
     [userInfo saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
         if (succeeded) {
@@ -142,9 +137,9 @@
     if ([textField isEqual:self.managerText]) {
         NSArray *arrayOfManagers = [managers valueForKeyPath:@"fullName"];
         [ActionSheetStringPicker showPickerWithTitle:@"Select Manager" rows:arrayOfManagers initialSelection:0 doneBlock:^(ActionSheetStringPicker *picker, NSInteger selectedIndex, id selectedValue) {
-            UserInfo *managerInfo = managers[selectedIndex];
-            selectedManager = managerInfo.user;
-            textField.text = managerInfo.fullName;
+            UserInfo *managerInfo = (UserInfo *)managers[selectedIndex];
+            selectedManager = managerInfo[@"user"];
+            textField.text = managerInfo[@"fullName"];
         } cancelBlock:^(ActionSheetStringPicker *picker) {
             
         } origin:textField];

@@ -7,7 +7,14 @@
 //
 
 #import "ASSignUpSuccessViewController.h"
+#import "AppDelegate.h"
 #import <Parse/Parse.h>
+#import "UserInfo.h"
+#import "ASLoginViewController.h"
+#import "Constants.h"
+#import "Global.h"
+#import <DTAlertView/DTAlertView.h>
+#import <MBProgressHUD/MBProgressHUD.h>
 
 @interface ASSignUpSuccessViewController ()
 @property (weak, nonatomic) IBOutlet UILabel *assignedUserIdLabel;
@@ -37,6 +44,32 @@
 #pragma mark - Actions
 
 - (IBAction)didTapDoneButton:(id)sender {
+    
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    [MBProgressHUD HUDForView:self.view].labelText = @"Validating Account";
+    
+    PFQuery *userQuery = [PFUser query];
+    [userQuery whereKey:@"objectId" equalTo:self.user.objectId];
+    [userQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+        
+        if (objects.count > 0) {
+            PFUser *userDetails = (PFUser *)[objects firstObject];
+            if (![[userDetails objectForKey:@"emailVerified"] boolValue]) {
+                [[DTAlertView alertViewUseBlock:^(DTAlertView *alertView, NSUInteger buttonIndex, NSUInteger cancelButtonIndex) {
+                    ASLoginViewController *loginVc = (ASLoginViewController *)[Global loadViewControllerFromStoryboardIdentifier:ASG_LOGIN_VC_IDENTIFIER];
+                    [self presentViewController:loginVc animated:YES completion:nil];
+                } title:@"Email Verification" message:@"You have not yet verified your account. Please check your email and follow the verification process." cancelButtonTitle:@"Okay" positiveButtonTitle:nil] show];
+            } else {
+                [PFUser logInWithUsernameInBackground:self.user.username password:self.user.password block:^(PFUser *user, NSError *error) {
+                    if (!error) {
+                        AppDelegate *delegate = [UIApplication sharedApplication].delegate;
+                        [delegate.window setRootViewController:delegate.tabBarViewController];
+                    }
+                }];
+            }
+        }
+    }];
     
 }
 

@@ -19,6 +19,7 @@
 		DE0D64801A9C62C10054C816 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DEC27E941A95C93400EFEF6F /* Bolts.framework */; };
 		DE0D64821A9C62FC0054C816 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE0D64811A9C62FC0054C816 /* Social.framework */; };
 		DE0D64841A9C63010054C816 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE0D64831A9C63010054C816 /* Accounts.framework */; };
+		DE0D648B1A9DDECC0054C816 /* ASWorksiteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DE0D648A1A9DDECC0054C816 /* ASWorksiteViewController.m */; };
 		DE29B9931A885BF300A2DC2E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = DE29B9921A885BF300A2DC2E /* main.m */; };
 		DE29B9961A885BF300A2DC2E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = DE29B9951A885BF300A2DC2E /* AppDelegate.m */; };
 		DE29B99F1A885BF300A2DC2E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DE29B99D1A885BF300A2DC2E /* Main.storyboard */; };
@@ -59,6 +60,8 @@
 		DE0D647D1A9C0A1D0054C816 /* Position.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Position.m; path = Model/Position.m; sourceTree = "<group>"; };
 		DE0D64811A9C62FC0054C816 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		DE0D64831A9C63010054C816 /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
+		DE0D64891A9DDECC0054C816 /* ASWorksiteViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ASWorksiteViewController.h; path = Worksite/ASWorksiteViewController.h; sourceTree = "<group>"; };
+		DE0D648A1A9DDECC0054C816 /* ASWorksiteViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ASWorksiteViewController.m; path = Worksite/ASWorksiteViewController.m; sourceTree = "<group>"; };
 		DE29B98D1A885BF200A2DC2E /* asg.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = asg.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DE29B9911A885BF300A2DC2E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DE29B9921A885BF300A2DC2E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -140,6 +143,7 @@
 			isa = PBXGroup;
 			children = (
 				DEC27E961A9AD97900EFEF6F /* Login */,
+				DE0D64851A9DDAD20054C816 /* Worksite */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -153,6 +157,15 @@
 				DE0D647D1A9C0A1D0054C816 /* Position.m */,
 			);
 			name = "Parse Objects";
+			sourceTree = "<group>";
+		};
+		DE0D64851A9DDAD20054C816 /* Worksite */ = {
+			isa = PBXGroup;
+			children = (
+				DE0D64891A9DDECC0054C816 /* ASWorksiteViewController.h */,
+				DE0D648A1A9DDECC0054C816 /* ASWorksiteViewController.m */,
+			);
+			name = Worksite;
 			sourceTree = "<group>";
 		};
 		DE29B9841A885BF200A2DC2E = {
@@ -356,6 +369,7 @@
 				DE0D63D31A9AE9230054C816 /* Global.m in Sources */,
 				DE0D63E51A9AF3E10054C816 /* ASSignupDetailsTableViewController.m in Sources */,
 				DE0D63E81A9AF4AA0054C816 /* ASLoginViewController.m in Sources */,
+				DE0D648B1A9DDECC0054C816 /* ASWorksiteViewController.m in Sources */,
 				DE0D647E1A9C0A1D0054C816 /* Position.m in Sources */,
 				DE0D64061A9B3E970054C816 /* UserInfo.m in Sources */,
 				DE0D63CC1A9AE0DC0054C816 /* ASSignUpViewController.m in Sources */,
