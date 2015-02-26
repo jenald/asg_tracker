@@ -33,11 +33,14 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="didTapLoginButton:" destination="LA9-aJ-Dcs" eventType="touchUpInside" id="U70-xG-fZY"/>
+                                </connections>
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Jrc-ea-ecD">
                                 <rect key="frame" x="46" y="438" width="282" height="47"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Your email address" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jYV-yg-pSX">
                                 <rect key="frame" x="46" y="381" width="282" height="47"/>
@@ -79,6 +82,10 @@
                         </constraints>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <outlet property="emailAddressText" destination="jYV-yg-pSX" id="NNH-nn-MIN"/>
+                        <outlet property="passwordText" destination="Jrc-ea-ecD" id="R13-IQ-e0P"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sdX-6h-Jk4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -588,7 +595,7 @@
             <objects>
                 <tabBarController id="nto-Y4-8Qj" sceneMemberID="viewController">
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
-                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics" translucent="NO"/>
+                    <nil key="simulatedBottomBarMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" translucent="NO" id="0f4-c8-T3C">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>

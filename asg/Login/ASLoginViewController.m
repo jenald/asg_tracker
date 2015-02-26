@@ -10,8 +10,14 @@
 #import "ASSignUpViewController.h"
 #import "Global.h"
 #import "Constants.h"
+#import <Parse/Parse.h>
+#import "AppDelegate.h"
+#import <DTAlertView/DTAlertView.h>
+#import <MBProgressHUD/MBProgressHUD.h>
 
 @interface ASLoginViewController ()
+@property (weak, nonatomic) IBOutlet UITextField *emailAddressText;
+@property (weak, nonatomic) IBOutlet UITextField *passwordText;
 
 @end
 
@@ -27,15 +33,48 @@
     // Dispose of any resources that can be recreated.
 }
 
+#pragma mark - Private Methods
+
+- (void)loginWithUser:(PFUser *)user {
+    [MBProgressHUD HUDForView:self.view].labelText = @"Veryfying User..";
+    [PFUser logInWithUsernameInBackground:user.username password:self.passwordText.text block:^(PFUser *user, NSError *error) {
+        [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+        if (!error && user) {
+            AppDelegate *delegate = [UIApplication sharedApplication].delegate;
+            [delegate.window setRootViewController:delegate.tabBarViewController];
+        } else {
+            [[[DTAlertView alloc]initWithTitle:@"Login Failed" message:@"Please check login credentials" delegate:nil cancelButtonTitle:@"Okay" positiveButtonTitle:nil] show];
+        }
+    }];
+}
+
 #pragma mark - Actions
 
 - (IBAction)didTapRegisterButton:(id)sender {
     ASSignUpViewController *controller =  (ASSignUpViewController *)[Global loadViewControllerFromStoryboardIdentifier:ASG_SIGNUP_VC_IDENTIFIER];
     
     UINavigationController *navigationViewController = [[UINavigationController alloc] initWithRootViewController:controller];
-    
     [self presentViewController:navigationViewController animated:YES completion:nil];
     
 }
+
+- (IBAction)didTapLoginButton:(id)sender {
+    
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    [MBProgressHUD HUDForView:self.view].labelText = @"Logging in..";
+    
+    PFQuery *query = [PFUser query];
+    [query whereKey:@"email" equalTo:self.emailAddressText.text];
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if (!error && objects.count > 0) {
+            PFUser *user = (PFUser *)[objects firstObject];
+            [self loginWithUser:user];
+        } else {
+            [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+            [[[DTAlertView alloc]initWithTitle:@"Login Failed" message:@"Please check login credentials" delegate:nil cancelButtonTitle:@"Okay" positiveButtonTitle:nil] show];
+        }
+    }];
+}
+
 
 @end
