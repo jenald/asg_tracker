@@ -8,14 +8,14 @@
 
 #import "ASSignupDetailsTableViewController.h"
 #import "ASSignUpSuccessViewController.h"
-#import "Global.h"
-#import "Constants.h"
-#import <Parse/Parse.h>
 #import <MBProgressHUD/MBProgressHUD.h>
-#import "DTAlertView.h"
 #import "ActionSheetStringPicker.h"
+#import <Parse/Parse.h>
+#import "DTAlertView.h"
+#import "Constants.h"
 #import "UserInfo.h"
 #import "Position.h"
+#import "Global.h"
 
 @interface ASSignupDetailsTableViewController() <UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet UITextField *nameText;

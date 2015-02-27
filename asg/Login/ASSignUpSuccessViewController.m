@@ -7,14 +7,14 @@
 //
 
 #import "ASSignUpSuccessViewController.h"
-#import "AppDelegate.h"
-#import <Parse/Parse.h>
-#import "UserInfo.h"
-#import "ASLoginViewController.h"
-#import "Constants.h"
-#import "Global.h"
 #import <DTAlertView/DTAlertView.h>
 #import <MBProgressHUD/MBProgressHUD.h>
+#import "ASLoginViewController.h"
+#import "ASRootController.h"
+#import <Parse/Parse.h>
+#import "Constants.h"
+#import "Global.h"
+#import "UserInfo.h"
 
 @interface ASSignUpSuccessViewController ()
 @property (weak, nonatomic) IBOutlet UILabel *assignedUserIdLabel;

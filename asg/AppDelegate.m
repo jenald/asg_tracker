@@ -11,6 +11,7 @@
 #import "Global.h"
 #import "Constants.h"
 #import "ASWorksiteViewController.h"
+#import "ASRootController.h"
 
 @interface AppDelegate ()
 
@@ -30,12 +31,6 @@
     
     // [Optional] Track statistics around application opens.
     [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
-    
-    ASWorksiteViewController *worksiteVC = (ASWorksiteViewController *)[Global loadViewControllerFromStoryboardIdentifier:ASG_WORKSITE_VC_IDENTIFIER];
-    worksiteVC.tabBarItem.title = @"Worksite";
-    
-    self.tabBarViewController = [[UITabBarController alloc] init];
-    self.tabBarViewController.viewControllers = @[worksiteVC];
     
     return YES;
 }

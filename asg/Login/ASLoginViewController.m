@@ -8,12 +8,12 @@
 
 #import "ASLoginViewController.h"
 #import "ASSignUpViewController.h"
-#import "Global.h"
-#import "Constants.h"
-#import <Parse/Parse.h>
-#import "AppDelegate.h"
-#import <DTAlertView/DTAlertView.h>
 #import <MBProgressHUD/MBProgressHUD.h>
+#import <DTAlertView/DTAlertView.h>
+#import "ASRootController.h"
+#import <Parse/Parse.h>
+#import "Constants.h"
+#import "Global.h"
 
 @interface ASLoginViewController ()
 @property (weak, nonatomic) IBOutlet UITextField *emailAddressText;
@@ -52,7 +52,6 @@
 
 - (IBAction)didTapRegisterButton:(id)sender {
     ASSignUpViewController *controller =  (ASSignUpViewController *)[Global loadViewControllerFromStoryboardIdentifier:ASG_SIGNUP_VC_IDENTIFIER];
-    
     UINavigationController *navigationViewController = [[UINavigationController alloc] initWithRootViewController:controller];
     [self presentViewController:navigationViewController animated:YES completion:nil];
     

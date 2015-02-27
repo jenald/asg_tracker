@@ -8,11 +8,11 @@
 
 #import "ASSignUpViewController.h"
 #import "ASSignupDetailsTableViewController.h"
+#import <MBProgressHUD/MBProgressHUD.h>
+#import <DTAlertView/DTAlertView.h>
+#import <Parse/Parse.h>
 #import "Constants.h"
 #import "Global.h"
-#import <DTAlertView/DTAlertView.h>
-#import <MBProgressHUD/MBProgressHUD.h>
-#import <Parse/Parse.h>
 
 @interface ASSignUpViewController ()
 @property (weak, nonatomic) IBOutlet UITextField *emailAddressText;
