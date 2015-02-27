@@ -25,6 +25,8 @@
 		DE29B99F1A885BF300A2DC2E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DE29B99D1A885BF300A2DC2E /* Main.storyboard */; };
 		DE29B9A11A885BF300A2DC2E /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DE29B9A01A885BF300A2DC2E /* Images.xcassets */; };
 		DE29B9A41A885BF300A2DC2E /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = DE29B9A21A885BF300A2DC2E /* LaunchScreen.xib */; };
+		DE7E47CA1A9F4856008530D5 /* ASRootController.m in Sources */ = {isa = PBXBuildFile; fileRef = DE7E47C91A9F4856008530D5 /* ASRootController.m */; };
+		DE7E480D1AA06F5E008530D5 /* WorkSite.m in Sources */ = {isa = PBXBuildFile; fileRef = DE7E480C1AA06F5E008530D5 /* WorkSite.m */; };
 		DEC27E7F1A95C82E00EFEF6F /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DEC27E7E1A95C82E00EFEF6F /* AudioToolbox.framework */; };
 		DEC27E811A95C83300EFEF6F /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DEC27E801A95C83300EFEF6F /* CFNetwork.framework */; };
 		DEC27E831A95C83900EFEF6F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DEC27E821A95C83900EFEF6F /* CoreGraphics.framework */; };
@@ -70,6 +72,10 @@
 		DE29B99E1A885BF300A2DC2E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		DE29B9A01A885BF300A2DC2E /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		DE29B9A31A885BF300A2DC2E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		DE7E47C81A9F4856008530D5 /* ASRootController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ASRootController.h; path = RootController/ASRootController.h; sourceTree = "<group>"; };
+		DE7E47C91A9F4856008530D5 /* ASRootController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ASRootController.m; path = RootController/ASRootController.m; sourceTree = "<group>"; };
+		DE7E480B1AA06F5E008530D5 /* WorkSite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WorkSite.h; path = Model/WorkSite.h; sourceTree = "<group>"; };
+		DE7E480C1AA06F5E008530D5 /* WorkSite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WorkSite.m; path = Model/WorkSite.m; sourceTree = "<group>"; };
 		DEC27E7B1A95C80E00EFEF6F /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
 		DEC27E7E1A95C82E00EFEF6F /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		DEC27E801A95C83300EFEF6F /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
@@ -143,7 +149,8 @@
 			isa = PBXGroup;
 			children = (
 				DEC27E961A9AD97900EFEF6F /* Login */,
-				DE0D64851A9DDAD20054C816 /* Worksite */,
+				DE7E47C41A9F4776008530D5 /* Tab Bar Controller */,
+				DE7E47CB1A9F61F5008530D5 /* Custom Views */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -155,6 +162,8 @@
 				DE0D64051A9B3E970054C816 /* UserInfo.m */,
 				DE0D647C1A9C0A1D0054C816 /* Position.h */,
 				DE0D647D1A9C0A1D0054C816 /* Position.m */,
+				DE7E480B1AA06F5E008530D5 /* WorkSite.h */,
+				DE7E480C1AA06F5E008530D5 /* WorkSite.m */,
 			);
 			name = "Parse Objects";
 			sourceTree = "<group>";
@@ -209,6 +218,23 @@
 				DE29B9921A885BF300A2DC2E /* main.m */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		DE7E47C41A9F4776008530D5 /* Tab Bar Controller */ = {
+			isa = PBXGroup;
+			children = (
+				DE7E47C81A9F4856008530D5 /* ASRootController.h */,
+				DE7E47C91A9F4856008530D5 /* ASRootController.m */,
+				DE0D64851A9DDAD20054C816 /* Worksite */,
+			);
+			name = "Tab Bar Controller";
+			sourceTree = "<group>";
+		};
+		DE7E47CB1A9F61F5008530D5 /* Custom Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "Custom Views";
 			sourceTree = "<group>";
 		};
 		DE89C7921A9387B100B1AB26 /* Frameworks */ = {
@@ -364,6 +390,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DE0D63EF1A9B1DB30054C816 /* ASSignUpSuccessViewController.m in Sources */,
+				DE7E480D1AA06F5E008530D5 /* WorkSite.m in Sources */,
 				DE29B9961A885BF300A2DC2E /* AppDelegate.m in Sources */,
 				DE29B9931A885BF300A2DC2E /* main.m in Sources */,
 				DE0D63D31A9AE9230054C816 /* Global.m in Sources */,
@@ -373,6 +400,7 @@
 				DE0D647E1A9C0A1D0054C816 /* Position.m in Sources */,
 				DE0D64061A9B3E970054C816 /* UserInfo.m in Sources */,
 				DE0D63CC1A9AE0DC0054C816 /* ASSignUpViewController.m in Sources */,
+				DE7E47CA1A9F4856008530D5 /* ASRootController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
