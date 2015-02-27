@@ -63,8 +63,8 @@
             } else {
                 [PFUser logInWithUsernameInBackground:self.user.username password:self.user.password block:^(PFUser *user, NSError *error) {
                     if (!error) {
-                        AppDelegate *delegate = [UIApplication sharedApplication].delegate;
-                        [delegate.window setRootViewController:delegate.tabBarViewController];
+                        ASRootController *rootController = (ASRootController *)[Global loadViewControllerFromStoryboardIdentifier:ASG_ROOT_VC_IDENTIFIER];
+                        [self presentViewController:rootController animated:YES completion:nil];
                     }
                 }];
             }

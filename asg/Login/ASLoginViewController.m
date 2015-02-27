@@ -40,8 +40,8 @@
     [PFUser logInWithUsernameInBackground:user.username password:self.passwordText.text block:^(PFUser *user, NSError *error) {
         [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
         if (!error && user) {
-            AppDelegate *delegate = [UIApplication sharedApplication].delegate;
-            [delegate.window setRootViewController:delegate.tabBarViewController];
+            ASRootController *rootController = (ASRootController *)[Global loadViewControllerFromStoryboardIdentifier:ASG_ROOT_VC_IDENTIFIER];
+            [self presentViewController:rootController animated:YES completion:nil];
         } else {
             [[[DTAlertView alloc]initWithTitle:@"Login Failed" message:@"Please check login credentials" delegate:nil cancelButtonTitle:@"Okay" positiveButtonTitle:nil] show];
         }

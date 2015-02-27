@@ -14,5 +14,6 @@
 #define ASG_SIGNUP_DETAILS_VC_IDENTIFIER @"signUpDetailsVC"
 #define ASG_SIGNUP_SUCCESS_VC_IDENTIFIER @"signUpSuccessVC"
 #define ASG_WORKSITE_VC_IDENTIFIER @"worksiteVC"
+#define ASG_ROOT_VC_IDENTIFIER @"rootVC"
 
 #endif
