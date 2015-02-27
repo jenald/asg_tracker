@@ -1,16 +1,19 @@
 PODS:
   - ActionSheetPicker-3.0 (1.3.12)
   - DTAlertView (1.2.1)
+  - HMSegmentedControl (1.4.0)
   - MBProgressHUD (0.9)
 
 DEPENDENCIES:
   - ActionSheetPicker-3.0 (~> 1.3.12)
   - DTAlertView
+  - HMSegmentedControl
   - MBProgressHUD
 
 SPEC CHECKSUMS:
   ActionSheetPicker-3.0: e49127271ec833864f3235ba7261b1f0d093a503
   DTAlertView: 887b49e37fe9cc3ea6c07a6a5e02ae768cf82cfd
+  HMSegmentedControl: c0517a8d4b80c978b8386f863f1c44729cfd7d6f
   MBProgressHUD: 2038dbcf3dce73215abed6001657043d53aa79a8
 
 COCOAPODS: 0.34.4
