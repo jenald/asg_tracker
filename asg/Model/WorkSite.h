@@ -16,5 +16,6 @@
 @property (retain) NSString *description;
 @property (retain) NSNumber *code;
 @property (retain) PFFile *image;
+@property (retain) PFUser *user;
 
 @end

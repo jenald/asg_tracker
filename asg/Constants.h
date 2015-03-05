@@ -14,6 +14,12 @@
 #define ASG_SIGNUP_DETAILS_VC_IDENTIFIER @"signUpDetailsVC"
 #define ASG_SIGNUP_SUCCESS_VC_IDENTIFIER @"signUpSuccessVC"
 #define ASG_WORKSITE_VC_IDENTIFIER @"worksiteVC"
+#define ASG_ADDWORKSITE_VC_IDENTIFIER @"addWorkSiteVC"
 #define ASG_ROOT_VC_IDENTIFIER @"rootVC"
+#define ASG_WORKSITE_DETAILS_VC_IDENTIFIER @"worksiteDetailsVC"
+
+#pragma mark - Worksite Push Identifiers
+
+#define ASG_WORKSITE_PUSH_DETAILS @"presentDetails"
 
 #endif
