@@ -11,6 +11,7 @@
 #import "Constants.h"
 #import "Global.h"
 #import "WorkSite.h"
+#import <Parse/Parse.h>
 
 @interface ASDetailsWorksiteViewController ()
 @property (weak, nonatomic) IBOutlet UILabel *siteNameLabel;
@@ -34,12 +35,25 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    self.siteCodeLabel.text = [[self.worksite objectForKey:@"code"] stringValue];
-    self.siteNameLabel.text = [self.worksite objectForKey:@"name"];
-    self.siteDescriptionText.text = [self.worksite objectForKey:@"description"];
-    if ([self.worksite objectForKey:@"image"]) {
-        self.imageView.image = [UIImage imageWithData:[[self.worksite objectForKey:@"image"] getData]];
-    }
+    PFQuery *query = [WorkSite query];
+    [query whereKey:@"objectId" equalTo:self.worksite.objectId];
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if(!error) {
+            if(objects.count >0) {
+                WorkSite *worksite = (WorkSite *)[objects firstObject];
+                self.siteCodeLabel.text = [[worksite objectForKey:@"code"] stringValue];
+                self.siteNameLabel.text = [worksite objectForKey:@"name"];
+                self.siteDescriptionText.text = [worksite objectForKey:@"description"];
+                if ([self.worksite objectForKey:@"image"]) {
+                    self.imageView.image = [UIImage imageWithData:[[worksite objectForKey:@"image"] getData]];
+                }
+                self.navigationItem.title = [worksite objectForKey:@"name"];
+            } else {
+                // TO DO: Handle if worksite is not found on database
+            }
+        }
+    }];
+   
 }
 
 #pragma mark - Actions

@@ -14,6 +14,7 @@
 @dynamic description;
 @dynamic code;
 @dynamic image;
+@dynamic user;
 
 + (NSString *)parseClassName {
     return @"WorkSite";

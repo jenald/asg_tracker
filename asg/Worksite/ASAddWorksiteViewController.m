@@ -13,7 +13,7 @@
 #import "WorkSite.h"
 #import <Parse/Parse.h>
 
-@interface ASAddWorksiteViewController () <UIImagePickerControllerDelegate>
+@interface ASAddWorksiteViewController () <UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
 @property (weak, nonatomic) IBOutlet UITextField *siteCodeText;
 @property (weak, nonatomic) IBOutlet UITextField *siteNameText;
@@ -39,19 +39,27 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     if (self.worksite) {
+        self.navigationItem.title = @"Update Worksite";
+        
         self.siteAddressText.text = [self.worksite objectForKey:@"address"];
         self.siteNameText.text = [self.worksite objectForKey:@"name"];
-        self.siteCodeText.text = [self.worksite objectForKey:@"code"];
+        self.siteCodeText.text = [[self.worksite objectForKey:@"code"] stringValue];
         self.descriptionText.text = [self.worksite objectForKey:@"description"];
         if ([self.worksite objectForKey:@"image"]) {
             self.imageView.image = [UIImage imageWithData:[[self.worksite objectForKey:@"image"] getData]];
         }
-}
+    } else {
+        self.navigationItem.title = @"Add Worksite";
+    }
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)dealloc {
+    self.worksite = nil;
 }
 
 #pragma mark - Private Methods
@@ -62,6 +70,32 @@
     }
     
     return NO;
+}
+
+- (void)saveOrUpdateWorksite:(WorkSite *)worksite isForUpdate:(BOOL)isForUpdate {
+    [worksite saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+        [MBProgressHUD hideHUDForView:self.view animated:YES];
+        if (!error) {
+            if (succeeded) {
+                if(isForUpdate) {
+                    [[DTAlertView alertViewUseBlock:^(DTAlertView *alertView, NSUInteger buttonIndex, NSUInteger cancelButtonIndex) {
+                        [self.navigationController popViewControllerAnimated:YES];
+                    } title:@"Success" message:@"You have successfully updated the worksite." cancelButtonTitle:nil positiveButtonTitle:@"Okay"] show];
+                } else {
+                    [[DTAlertView alertViewUseBlock:^(DTAlertView *alertView, NSUInteger buttonIndex, NSUInteger cancelButtonIndex) {
+                        [self.navigationController popViewControllerAnimated:YES];
+                    } title:@"Success" message:@"You have added a new worksite." cancelButtonTitle:nil positiveButtonTitle:@"Okay"] show];
+                }
+            } else {
+                [[DTAlertView alertViewWithTitle:@"Error" message:@"An unexpected error occured. Please try again." delegate:nil cancelButtonTitle:nil positiveButtonTitle:@"Okay"] show];
+            }
+            
+            [worksite saveInBackground];
+        } else {
+            [[DTAlertView alertViewWithTitle:@"Error" message:error.localizedDescription delegate:nil cancelButtonTitle:nil positiveButtonTitle:@"Okay"] show];
+        }
+    }];
+
 }
 
 #pragma mark - Actions
@@ -88,34 +122,49 @@
     [MBProgressHUD HUDForView:self.view].labelText = @"Saving Worksite";
     
     if ([self areAllFieldsValid]) {
-        WorkSite *worksite = [[WorkSite alloc] init];
-        worksite.name = self.siteNameText.text;
-        worksite.code = @([self.siteCodeText.text integerValue]);
-        worksite.address = self.siteAddressText.text;
-        worksite.description = self.descriptionText.text;
-        worksite.user = [PFUser currentUser];
         
-        if (selectedImage) {
-            NSData *imageData = UIImagePNGRepresentation(selectedImage);
-            worksite.image = [PFFile fileWithName:@"Site.png" data:imageData];
-        }
-        
-        [worksite saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-            [MBProgressHUD hideHUDForView:self.view animated:YES];
-            if (!error) {
-                if (succeeded) {
-                    [[DTAlertView alertViewUseBlock:^(DTAlertView *alertView, NSUInteger buttonIndex, NSUInteger cancelButtonIndex) {
-                        [self.navigationController popViewControllerAnimated:YES];
-                    } title:@"Success" message:@"You have added a new worksite." cancelButtonTitle:nil positiveButtonTitle:@"Okay"] show];
+        if(self.worksite) {
+            PFQuery *query = [WorkSite query];
+            [query whereKey:@"objectId" equalTo:self.worksite.objectId];
+            [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+                if(!error) {
+                    if(objects.count > 0) {
+                        WorkSite *worksite = (WorkSite *)[objects firstObject];
+                        [worksite setObject:self.siteNameText.text forKey:@"name"];
+                        [worksite setObject:@([self.siteCodeText.text integerValue]) forKey:@"code"];
+                        [worksite setObject:self.siteAddressText.text forKey:@"address"];
+                        [worksite setObject:self.descriptionText.text forKey:@"description"];
+
+                        if (selectedImage) {
+                            NSData *imageData = UIImagePNGRepresentation(selectedImage);
+                            [worksite setObject:[PFFile fileWithName:@"Site.png" data:imageData] forKey:@"image"];
+                        }
+                        
+                        [self saveOrUpdateWorksite:worksite isForUpdate:YES];
+
+                    } else {
+                        [[DTAlertView alertViewWithTitle:@"Error" message:@"An unexpected error occured. Please try again." delegate:nil cancelButtonTitle:nil positiveButtonTitle:@"Okay"] show];
+                    }
                 } else {
-                    [[DTAlertView alertViewWithTitle:@"Error" message:@"An unexpected error occured. Please try again." delegate:nil cancelButtonTitle:nil positiveButtonTitle:@"Okay"] show];
+                    [[DTAlertView alertViewWithTitle:@"Error" message:error.localizedDescription delegate:nil cancelButtonTitle:nil positiveButtonTitle:@"Okay"] show];
                 }
-                
-                [worksite saveInBackground];
-            } else {
-                [[DTAlertView alertViewWithTitle:@"Error" message:error.localizedDescription delegate:nil cancelButtonTitle:nil positiveButtonTitle:@"Okay"] show];
+            }];
+        } else {
+            WorkSite *worksite = [[WorkSite alloc] init];
+            
+            worksite.name = self.siteNameText.text;
+            worksite.code = @([self.siteCodeText.text integerValue]);
+            worksite.address = self.siteAddressText.text;
+            worksite.description = self.descriptionText.text;
+            worksite.user = [PFUser currentUser];
+            
+            if (selectedImage) {
+                NSData *imageData = UIImagePNGRepresentation(selectedImage);
+                worksite.image = [PFFile fileWithName:@"Site.png" data:imageData];
             }
-        }];
+
+            [self saveOrUpdateWorksite:worksite isForUpdate:NO];
+        }
     } else {
         
     }
