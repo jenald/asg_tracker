@@ -10,6 +10,7 @@
 #define asg_Constants_h
 
 #define ASG_LOGIN_VC_IDENTIFIER @"loginVC"
+#define ASG_RESET_PASS_VC_IDENTIFIER @"resetPassVC"
 #define ASG_SIGNUP_VC_IDENTIFIER @"signUpVC"
 #define ASG_SIGNUP_DETAILS_VC_IDENTIFIER @"signUpDetailsVC"
 #define ASG_SIGNUP_SUCCESS_VC_IDENTIFIER @"signUpSuccessVC"

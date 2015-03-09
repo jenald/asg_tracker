@@ -9,6 +9,7 @@ pod 'DTAlertView'
 pod 'MBProgressHUD'
 pod 'ActionSheetPicker-3.0', '~> 1.3.12'
 pod 'HMSegmentedControl'
+pod 'IQKeyboardManager'
 
 end
 

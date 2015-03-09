@@ -19,12 +19,15 @@
 @property (weak, nonatomic) IBOutlet UITextField *siteNameText;
 @property (weak, nonatomic) IBOutlet UITextField *siteAddressText;
 @property (weak, nonatomic) IBOutlet UITextView *descriptionText;
+@property (strong, nonatomic) UIImagePickerController *imagePicker;
+
 @end
 
 @implementation ASAddWorksiteViewController {
-    UIImagePickerController *imagePicker;
     UIImage *selectedImage;
 }
+
+@synthesize imagePicker;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -33,7 +36,9 @@
         imagePicker = [[UIImagePickerController alloc] init];
         imagePicker.modalPresentationStyle = UIModalPresentationFullScreen;
         imagePicker.delegate = self;
+        imagePicker.allowsEditing = NO;
     }
+    
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -136,7 +141,12 @@
                         [worksite setObject:self.descriptionText.text forKey:@"description"];
 
                         if (selectedImage) {
-                            NSData *imageData = UIImagePNGRepresentation(selectedImage);
+                            CGSize newSize = CGSizeMake(CGRectGetWidth(self.imageView.frame), CGRectGetHeight(self.imageView.frame));
+                            UIGraphicsBeginImageContext(newSize);
+                            [selectedImage drawInRect:CGRectMake(0,0,newSize.width,newSize.height)];
+                            UIImage* newImage = UIGraphicsGetImageFromCurrentImageContext();
+                            UIGraphicsEndImageContext();
+                            NSData *imageData = UIImagePNGRepresentation(newImage);
                             [worksite setObject:[PFFile fileWithName:@"Site.png" data:imageData] forKey:@"image"];
                         }
                         
@@ -159,7 +169,12 @@
             worksite.user = [PFUser currentUser];
             
             if (selectedImage) {
-                NSData *imageData = UIImagePNGRepresentation(selectedImage);
+                CGSize newSize = CGSizeMake(CGRectGetWidth(self.imageView.frame), CGRectGetHeight(self.imageView.frame));
+                UIGraphicsBeginImageContext(newSize);
+                [selectedImage drawInRect:CGRectMake(0,0,newSize.width,newSize.height)];
+                UIImage* newImage = UIGraphicsGetImageFromCurrentImageContext();
+                UIGraphicsEndImageContext();
+                NSData *imageData = UIImagePNGRepresentation(newImage);
                 worksite.image = [PFFile fileWithName:@"Site.png" data:imageData];
             }
 
@@ -174,9 +189,10 @@
 #pragma mark - UIImagePickerControllerDelegate
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
+    selectedImage = info[UIImagePickerControllerOriginalImage];
+    self.imageView.image = selectedImage;
     [picker dismissViewControllerAnimated:YES completion:^{
-        selectedImage = info[UIImagePickerControllerOriginalImage];
-        self.imageView.image = selectedImage;
+        
     }];
 }
 

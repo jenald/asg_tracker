@@ -14,6 +14,7 @@
 #import <Parse/Parse.h>
 #import "Constants.h"
 #import "Global.h"
+#import "ASResetPasswordViewController.h"
 
 @interface ASLoginViewController ()
 @property (weak, nonatomic) IBOutlet UITextField *emailAddressText;
@@ -75,5 +76,11 @@
     }];
 }
 
+- (IBAction)didTapForgotPassword:(id)sender {
+    
+    ASResetPasswordViewController *resetPasswordVC = (ASResetPasswordViewController *)[Global loadViewControllerFromStoryboardIdentifier:ASG_RESET_PASS_VC_IDENTIFIER];
+    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:resetPasswordVC];
+    [self presentViewController:navigationController animated:YES completion:nil];
+}
 
 @end
