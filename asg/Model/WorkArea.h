@@ -14,8 +14,8 @@
 + (NSString *)parseClassName;
 @property (retain) NSString *name;
 @property (retain) NSString *address;
-@property (retain) NSString *status;
-@property (retain) NSNumber *code;
+@property (assign) BOOL status;
+@property (retain) NSString *code;
 @property (retain) PFFile *image;
 @property (retain) WorkSite *worksite;
 

@@ -14,7 +14,7 @@
 @property (retain) NSString *name;
 @property (retain) NSString *address;
 @property (retain) NSString *description;
-@property (retain) NSNumber *code;
+@property (retain) NSString *code;
 @property (retain) PFFile *image;
 @property (retain) PFUser *user;
 
