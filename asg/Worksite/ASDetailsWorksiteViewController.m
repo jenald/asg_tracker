@@ -12,6 +12,7 @@
 #import "Constants.h"
 #import "Global.h"
 #import "WorkSite.h"
+#import "UserInfo.h"
 #import <Parse/Parse.h>
 
 @interface ASDetailsWorksiteViewController ()
@@ -36,13 +37,18 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+    
+    if (![[Global sharedInstance] isManager]) {
+        self.navigationItem.rightBarButtonItem = nil;
+    }
+    
     PFQuery *query = [WorkSite query];
     [query whereKey:@"objectId" equalTo:self.worksite.objectId];
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if(!error) {
             if(objects.count >0) {
                 WorkSite *worksite = (WorkSite *)[objects firstObject];
-                self.siteCodeLabel.text = [[worksite objectForKey:@"code"] stringValue];
+                self.siteCodeLabel.text = [worksite objectForKey:@"code"];
                 self.siteNameLabel.text = [worksite objectForKey:@"name"];
                 self.siteDescriptionText.text = [worksite objectForKey:@"description"];
                 if ([self.worksite objectForKey:@"image"]) {

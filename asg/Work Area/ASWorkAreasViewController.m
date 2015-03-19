@@ -31,6 +31,13 @@
     // Do any additional setup after loading the view.
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    if (![[Global sharedInstance] isManager]) {
+        self.navigationItem.rightBarButtonItem = nil;
+    }
+}
+
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     [self fetchWorkAreas];
@@ -56,7 +63,7 @@
                 workAreas = [[NSArray alloc] initWithArray:objects];
                 [self.tableView reloadData];
             } else {
-                [[DTAlertView alertViewWithTitle:nil message:@"No work areas found. Please add a work area" delegate:nil cancelButtonTitle:nil positiveButtonTitle:@"Okay"] show];
+//                [[DTAlertView alertViewWithTitle:nil message:@"No work areas found. Please add a work area" delegate:nil cancelButtonTitle:nil positiveButtonTitle:@"Okay"] show];
             }
         } else {
             [[DTAlertView alertViewWithTitle:@"Request Failed" message:error.localizedDescription delegate:nil cancelButtonTitle:nil positiveButtonTitle:@"Okay"] show];

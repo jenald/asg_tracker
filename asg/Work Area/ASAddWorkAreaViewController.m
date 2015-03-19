@@ -19,8 +19,9 @@
 @property (weak, nonatomic) IBOutlet UITextField *areaCodeText;
 @property (weak, nonatomic) IBOutlet UITextField *areaNameText;
 @property (weak, nonatomic) IBOutlet UITextField *areaAddressText;
-@property (weak, nonatomic) IBOutlet UITextField *statusText;
+@property (weak, nonatomic) IBOutlet UILabel *statusLabel;
 @property (strong, nonatomic) UIImagePickerController *imagePicker;
+@property (weak, nonatomic) IBOutlet UISwitch *statusSwitch;
 
 @end
 
@@ -46,8 +47,15 @@
     [super viewWillAppear:animated];
     if (self.workarea) {
         self.areaNameText.text = [self.workarea objectForKey:@"name"];
-        self.areaCodeText.text = [[self.workarea objectForKey:@"code"] stringValue];
-        self.statusText.text = [self.workarea objectForKey:@"status"];
+        self.areaCodeText.text = [self.workarea objectForKey:@"code"];
+        
+        if ([[self.workarea objectForKey:@"status"] boolValue]) {
+            [self.statusSwitch setOn:YES];
+            self.statusLabel.text = @"Active";
+        } else {
+            [self.statusSwitch setOn:NO];
+            self.statusLabel.text = @"Inactive";
+        }
         self.areaAddressText.text = [self.workarea objectForKey:@"address"];
 
         if ([self.workarea objectForKey:@"image"]) {
@@ -67,7 +75,7 @@
 #pragma mark - Private Methods
 
 - (BOOL)areAllFieldsValid {
-    if (self.areaNameText.text.length != 0 && self.areaAddressText.text.length != 0 && self.statusText.text.length != 0 && self.areaCodeText.text.length != 0) {
+    if (self.areaNameText.text.length != 0 && self.areaAddressText.text.length != 0) {
         return YES;
     }
     
@@ -104,6 +112,14 @@
 }
 
 #pragma mark - Actions
+- (IBAction)statusSwitchValueDidChange:(id)sender {
+    UISwitch *statusSwitch = (UISwitch *)sender;
+    if (statusSwitch.isOn) {
+        self.statusLabel.text = @"Active";
+    } else {
+        self.statusLabel.text = @"Inactive";
+    }
+}
 
 - (IBAction)didTapImageButton:(id)sender {
     [ActionSheetStringPicker showPickerWithTitle:@"Select Manager" rows:@[@"Take Photo",@"Photo Library"] initialSelection:0 doneBlock:^(ActionSheetStringPicker *picker, NSInteger selectedIndex, id selectedValue) {
@@ -133,9 +149,9 @@
                     if(objects.count > 0) {
                         WorkArea *worksite = (WorkArea *)[objects firstObject];
                         [worksite setObject:self.areaNameText.text forKey:@"name"];
-                        [worksite setObject:@([self.areaCodeText.text integerValue]) forKey:@"code"];
+                        [worksite setObject:self.areaCodeText.text forKey:@"code"];
                         [worksite setObject:self.areaAddressText.text forKey:@"address"];
-                        [worksite setObject:self.statusText.text forKey:@"status"];
+                        [worksite setObject:@(self.statusSwitch.isOn) forKey:@"status"];
                         
                         if (selectedImage) {
                             CGSize newSize = CGSizeMake(CGRectGetWidth(self.imageView.frame), CGRectGetHeight(self.imageView.frame));
@@ -161,9 +177,9 @@
             WorkArea *workarea = [[WorkArea alloc] init];
             
             workarea.name = self.areaNameText.text;
-            workarea.code = @([self.areaCodeText.text integerValue]);
+            workarea.code = self.areaCodeText.text;
             workarea.address = self.areaAddressText.text;
-            workarea.status = self.statusText.text;
+            workarea.status = self.statusSwitch.isOn;
             workarea.worksite = self.worksite;
             
             if (selectedImage) {

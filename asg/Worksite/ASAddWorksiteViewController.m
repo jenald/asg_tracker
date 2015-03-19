@@ -48,7 +48,7 @@
         
         self.siteAddressText.text = [self.worksite objectForKey:@"address"];
         self.siteNameText.text = [self.worksite objectForKey:@"name"];
-        self.siteCodeText.text = [[self.worksite objectForKey:@"code"] stringValue];
+        self.siteCodeText.text = [self.worksite objectForKey:@"code"];
         self.descriptionText.text = [self.worksite objectForKey:@"description"];
         if ([self.worksite objectForKey:@"image"]) {
             self.imageView.image = [UIImage imageWithData:[[self.worksite objectForKey:@"image"] getData]];
@@ -70,7 +70,7 @@
 #pragma mark - Private Methods
 
 - (BOOL)areAllFieldsValid {
-    if (self.siteNameText.text.length != 0 && self.siteAddressText.text.length != 0 && self.descriptionText.text.length != 0 && self.siteCodeText.text.length != 0) {
+    if (self.siteNameText.text.length != 0 && self.siteAddressText.text.length != 0) {
         return YES;
     }
     
@@ -106,7 +106,6 @@
 #pragma mark - Actions
 
 - (IBAction)didTapCameraButton:(id)sender {
-    
     [ActionSheetStringPicker showPickerWithTitle:@"Select Manager" rows:@[@"Take Photo",@"Photo Library"] initialSelection:0 doneBlock:^(ActionSheetStringPicker *picker, NSInteger selectedIndex, id selectedValue) {
         if (selectedIndex == 0) {
             imagePicker.sourceType = UIImagePickerControllerSourceTypeCamera;
@@ -123,10 +122,9 @@
 
 - (IBAction)didTapSaveBarButton:(id)sender {
     
-    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    [MBProgressHUD HUDForView:self.view].labelText = @"Saving Worksite";
-    
     if ([self areAllFieldsValid]) {
+        [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        [MBProgressHUD HUDForView:self.view].labelText = @"Saving Worksite";
         
         if(self.worksite) {
             PFQuery *query = [WorkSite query];
@@ -136,7 +134,7 @@
                     if(objects.count > 0) {
                         WorkSite *worksite = (WorkSite *)[objects firstObject];
                         [worksite setObject:self.siteNameText.text forKey:@"name"];
-                        [worksite setObject:@([self.siteCodeText.text integerValue]) forKey:@"code"];
+                        [worksite setObject:self.siteCodeText.text forKey:@"code"];
                         [worksite setObject:self.siteAddressText.text forKey:@"address"];
                         [worksite setObject:self.descriptionText.text forKey:@"description"];
 
@@ -163,7 +161,7 @@
             WorkSite *worksite = [[WorkSite alloc] init];
             
             worksite.name = self.siteNameText.text;
-            worksite.code = @([self.siteCodeText.text integerValue]);
+            worksite.code = self.siteCodeText.text;
             worksite.address = self.siteAddressText.text;
             worksite.description = self.descriptionText.text;
             worksite.user = [PFUser currentUser];
@@ -181,7 +179,7 @@
             [self saveOrUpdateWorksite:worksite isForUpdate:NO];
         }
     } else {
-        [[DTAlertView alertViewWithTitle:@"Invalid" message:@"Please fill up all fields" delegate:nil cancelButtonTitle:nil positiveButtonTitle:@"Okay"] show];
+        [[DTAlertView alertViewWithTitle:@"Invalid" message:@"Please fill up all fields (Name and Address)" delegate:nil cancelButtonTitle:nil positiveButtonTitle:@"Okay"] show];
     }
 }
 

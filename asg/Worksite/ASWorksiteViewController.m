@@ -13,9 +13,10 @@
 #import <MBProgressHUD/MBProgressHUD.h>
 #import "Constants.h"
 #import "Global.h"
+#import "UserInfo.h"
+#import "Position.h"
 #import "ASDetailsWorksiteViewController.h"
-
-
+#import "ASLoginViewController.h"
 
 @interface ASWorksiteViewController () <UITableViewDataSource, UITableViewDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -35,6 +36,9 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+    if (![[Global sharedInstance] isManager]) {
+        self.navigationItem.rightBarButtonItem = nil;
+    }
     [self fetchCurrentUserWorksites];
 }
 
@@ -47,14 +51,13 @@
 
 - (void)fetchCurrentUserWorksites {
     PFQuery *worksitesQuery = [WorkSite query];
-    [worksitesQuery whereKey:@"user" equalTo:[PFUser currentUser]];
     [worksitesQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (!error) {
             if (objects) {
                 worksites = [NSArray arrayWithArray:objects];
                 [self.tableView reloadData];
             } else {
-                [[DTAlertView alertViewWithTitle:nil message:@"No worksites found. Please add a worksite" delegate:nil cancelButtonTitle:nil positiveButtonTitle:@"Okay"] show];
+//                [[DTAlertView alertViewWithTitle:nil message:@"No worksites found. Please add a worksite" delegate:nil cancelButtonTitle:nil positiveButtonTitle:@"Okay"] show];
             }
         } else {
             [[DTAlertView alertViewWithTitle:@"Request Failed" message:error.localizedDescription delegate:nil cancelButtonTitle:nil positiveButtonTitle:@"Okay"] show];
@@ -64,8 +67,14 @@
 
 #pragma mark - Actions
 - (IBAction)didTapLogoutButton:(id)sender {
-    [PFUser logOut];
-    [self dismissViewControllerAnimated:YES completion:nil];
+    [[DTAlertView alertViewUseBlock:^(DTAlertView *alertView, NSUInteger buttonIndex, NSUInteger cancelButtonIndex) {
+        if (buttonIndex == 1) {
+            ASLoginViewController *loginViewController = (ASLoginViewController *)[Global loadViewControllerFromStoryboardIdentifier:ASG_LOGIN_VC_IDENTIFIER];
+            [self presentViewController:loginViewController animated:YES completion:^{
+                [PFUser logOut];
+            }];
+        }
+    } title:@"Logout" message:@"Are you sure you want to logout?" cancelButtonTitle:@"No" positiveButtonTitle:@"Yes"] show];
 }
 
 - (IBAction)segmentControlValueDidChange:(id)sender {

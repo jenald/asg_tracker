@@ -11,6 +11,8 @@
 #import "Global.h"
 #import "Constants.h"
 #import "ASWorksiteViewController.h"
+#import "ASLoginViewController.h"
+#import "ASRootController.h"
 #import "ASRootController.h"
 
 @interface AppDelegate ()
@@ -31,6 +33,20 @@
     
     // [Optional] Track statistics around application opens.
     [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
+    
+    if ([PFUser currentUser] == nil) {
+        ASLoginViewController *loginViewController = (ASLoginViewController *)[Global loadViewControllerFromStoryboardIdentifier:ASG_LOGIN_VC_IDENTIFIER];
+        self.window.rootViewController = loginViewController;
+    } else {
+        ASRootController *worksiteViewController = (ASRootController *)[Global loadViewControllerFromStoryboardIdentifier:ASG_ROOT_VC_IDENTIFIER];
+        self.window.rootViewController = worksiteViewController;
+    }
+    
+    [Global isCurrentUserManager:^(BOOL isManager) {
+        [[Global sharedInstance] setIsManager:isManager];
+    }];
+    
+    [self.window makeKeyAndVisible];
     
     return YES;
 }

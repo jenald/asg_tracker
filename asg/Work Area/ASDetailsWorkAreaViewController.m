@@ -31,6 +31,11 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+    
+    if (![[Global sharedInstance] isManager]) {
+        self.navigationItem.rightBarButtonItem = nil;
+    }
+    
     PFQuery *query = [WorkArea query];
     [query whereKey:@"objectId" equalTo:self.workarea.objectId];
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
@@ -38,8 +43,9 @@
             if(objects.count >0) {
                 WorkArea *workArea = (WorkArea *)[objects firstObject];
                 self.areaIDLabel.text = [workArea objectForKey:@"name"];
-                self.areaCodeLabel.text = [[workArea objectForKey:@"code"] stringValue];
-                self.areaStatusLabel.text = [workArea objectForKey:@"status"];
+                self.areaCodeLabel.text = [workArea objectForKey:@"code"];
+                self.areaStatusLabel.text = ([[workArea objectForKey:@"status"] boolValue] ? @"Active" : @"Inactive" );
+                
                 self.siteIDLabel.text = [self.worksite objectForKey:@"name"];
                 
                 if ([workArea objectForKey:@"image"]) {
@@ -58,7 +64,7 @@
     // Dispose of any resources that can be recreated.
 }
 
-#pragma mark - Private Actions
+#pragma mark - Actions
 
 - (IBAction)didTapCheckInButton:(id)sender {
     // TO DO : Check-in Functionality
@@ -69,7 +75,6 @@
     updateWorkAreaViewController.workarea = self.workarea;
     
     [self.navigationController pushViewController:updateWorkAreaViewController animated:YES];
-    
 }
 
 @end

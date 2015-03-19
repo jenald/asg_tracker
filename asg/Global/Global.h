@@ -9,8 +9,16 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
-@interface Global : NSObject
+typedef void(^myCompletion)(BOOL);
+
+@interface Global : NSObject {
+    BOOL isManager;
+}
+
+@property (assign) BOOL isManager;
++ (id)sharedInstance;
 + (UIViewController *)loadViewControllerFromStoryboardIdentifier:(NSString *)identifier;
 + (BOOL)isValidEmailString:(NSString *)emailString;
++ (void)isCurrentUserManager:(myCompletion)completion;
 
 @end
