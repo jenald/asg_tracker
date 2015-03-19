@@ -1,29 +1,30 @@
 //
-//  ASAddWorksiteViewController.m
+//  ASAddWorkAreaViewController.m
 //  asg
 //
-//  Created by Rey Jenald Peña on 3/3/15.
+//  Created by Rey Jenald Pena on 3/12/15.
 //  Copyright (c) 2015 appfibre. All rights reserved.
 //
 
-#import "ASAddWorksiteViewController.h"
+#import "ASAddWorkAreaViewController.h"
+#import <ActionSheetPicker-3.0/ActionSheetStringPicker.h>
+#import <Parse/Parse.h>
 #import <MBProgressHUD/MBProgressHUD.h>
 #import <DTAlertView/DTAlertView.h>
-#import <ActionSheetPicker-3.0/ActionSheetStringPicker.h>
+#import "WorkArea.h"
 #import "WorkSite.h"
-#import <Parse/Parse.h>
 
-@interface ASAddWorksiteViewController () <UIImagePickerControllerDelegate, UINavigationControllerDelegate>
+@interface ASAddWorkAreaViewController () <UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
-@property (weak, nonatomic) IBOutlet UITextField *siteCodeText;
-@property (weak, nonatomic) IBOutlet UITextField *siteNameText;
-@property (weak, nonatomic) IBOutlet UITextField *siteAddressText;
-@property (weak, nonatomic) IBOutlet UITextView *descriptionText;
+@property (weak, nonatomic) IBOutlet UITextField *areaCodeText;
+@property (weak, nonatomic) IBOutlet UITextField *areaNameText;
+@property (weak, nonatomic) IBOutlet UITextField *areaAddressText;
+@property (weak, nonatomic) IBOutlet UITextField *statusText;
 @property (strong, nonatomic) UIImagePickerController *imagePicker;
 
 @end
 
-@implementation ASAddWorksiteViewController {
+@implementation ASAddWorkAreaViewController {
     UIImage *selectedImage;
 }
 
@@ -38,23 +39,23 @@
         imagePicker.delegate = self;
         imagePicker.allowsEditing = NO;
     }
-    
+
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    if (self.worksite) {
-        self.navigationItem.title = @"Update Worksite";
-        
-        self.siteAddressText.text = [self.worksite objectForKey:@"address"];
-        self.siteNameText.text = [self.worksite objectForKey:@"name"];
-        self.siteCodeText.text = [[self.worksite objectForKey:@"code"] stringValue];
-        self.descriptionText.text = [self.worksite objectForKey:@"description"];
-        if ([self.worksite objectForKey:@"image"]) {
-            self.imageView.image = [UIImage imageWithData:[[self.worksite objectForKey:@"image"] getData]];
+    if (self.workarea) {
+        self.areaNameText.text = [self.workarea objectForKey:@"name"];
+        self.areaCodeText.text = [[self.workarea objectForKey:@"code"] stringValue];
+        self.statusText.text = [self.workarea objectForKey:@"status"];
+        self.areaAddressText.text = [self.workarea objectForKey:@"address"];
+
+        if ([self.workarea objectForKey:@"image"]) {
+            self.imageView.image = [UIImage imageWithData:[[self.workarea objectForKey:@"image"] getData]];
         }
+        self.navigationItem.title = [self.workarea objectForKey:@"name"];
     } else {
-        self.navigationItem.title = @"Add Worksite";
+        self.navigationItem.title = @"Update Work Area";
     }
 }
 
@@ -63,50 +64,48 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void)dealloc {
-    self.worksite = nil;
-}
-
 #pragma mark - Private Methods
 
 - (BOOL)areAllFieldsValid {
-    if (self.siteNameText.text.length != 0 && self.siteAddressText.text.length != 0 && self.descriptionText.text.length != 0 && self.siteCodeText.text.length != 0) {
+    if (self.areaNameText.text.length != 0 && self.areaAddressText.text.length != 0 && self.statusText.text.length != 0 && self.areaCodeText.text.length != 0) {
         return YES;
     }
     
     return NO;
 }
 
-- (void)saveOrUpdateWorksite:(WorkSite *)worksite isForUpdate:(BOOL)isForUpdate {
-    [worksite saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+- (void)saveOrUpdateWorksite:(WorkArea *)workarea isForUpdate:(BOOL)isForUpdate {
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    [MBProgressHUD HUDForView:self.view].labelText = @"Saving Work Area";
+    
+    [workarea saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         [MBProgressHUD hideHUDForView:self.view animated:YES];
         if (!error) {
             if (succeeded) {
                 if(isForUpdate) {
                     [[DTAlertView alertViewUseBlock:^(DTAlertView *alertView, NSUInteger buttonIndex, NSUInteger cancelButtonIndex) {
                         [self.navigationController popViewControllerAnimated:YES];
-                    } title:@"Success" message:@"You have successfully updated the worksite." cancelButtonTitle:nil positiveButtonTitle:@"Okay"] show];
+                    } title:@"Success" message:@"You have successfully updated the work area." cancelButtonTitle:nil positiveButtonTitle:@"Okay"] show];
                 } else {
                     [[DTAlertView alertViewUseBlock:^(DTAlertView *alertView, NSUInteger buttonIndex, NSUInteger cancelButtonIndex) {
                         [self.navigationController popViewControllerAnimated:YES];
-                    } title:@"Success" message:@"You have added a new worksite." cancelButtonTitle:nil positiveButtonTitle:@"Okay"] show];
+                    } title:@"Success" message:@"You have added a new work area." cancelButtonTitle:nil positiveButtonTitle:@"Okay"] show];
                 }
             } else {
                 [[DTAlertView alertViewWithTitle:@"Error" message:@"An unexpected error occured. Please try again." delegate:nil cancelButtonTitle:nil positiveButtonTitle:@"Okay"] show];
             }
             
-            [worksite saveInBackground];
+            [workarea saveInBackground];
         } else {
             [[DTAlertView alertViewWithTitle:@"Error" message:error.localizedDescription delegate:nil cancelButtonTitle:nil positiveButtonTitle:@"Okay"] show];
         }
     }];
-
+    
 }
 
 #pragma mark - Actions
 
-- (IBAction)didTapCameraButton:(id)sender {
-    
+- (IBAction)didTapImageButton:(id)sender {
     [ActionSheetStringPicker showPickerWithTitle:@"Select Manager" rows:@[@"Take Photo",@"Photo Library"] initialSelection:0 doneBlock:^(ActionSheetStringPicker *picker, NSInteger selectedIndex, id selectedValue) {
         if (selectedIndex == 0) {
             imagePicker.sourceType = UIImagePickerControllerSourceTypeCamera;
@@ -114,32 +113,30 @@
         } else if (selectedIndex == 1) {
             imagePicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
             [self presentViewController:imagePicker animated:YES completion:nil];
-
+            
         }
     } cancelBlock:^(ActionSheetStringPicker *picker) {
         
     } origin:sender];
 }
 
-- (IBAction)didTapSaveBarButton:(id)sender {
-    
-    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    [MBProgressHUD HUDForView:self.view].labelText = @"Saving Worksite";
-    
+- (IBAction)didTapSaveButton:(id)sender {
     if ([self areAllFieldsValid]) {
-        
-        if(self.worksite) {
-            PFQuery *query = [WorkSite query];
-            [query whereKey:@"objectId" equalTo:self.worksite.objectId];
+        if (self.workarea) {
+            [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+            [MBProgressHUD HUDForView:self.view].labelText = @"Updating Work Area";
+            PFQuery *query = [WorkArea query];
+            [query whereKey:@"objectId" equalTo:self.workarea.objectId];
             [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+                [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
                 if(!error) {
                     if(objects.count > 0) {
-                        WorkSite *worksite = (WorkSite *)[objects firstObject];
-                        [worksite setObject:self.siteNameText.text forKey:@"name"];
-                        [worksite setObject:@([self.siteCodeText.text integerValue]) forKey:@"code"];
-                        [worksite setObject:self.siteAddressText.text forKey:@"address"];
-                        [worksite setObject:self.descriptionText.text forKey:@"description"];
-
+                        WorkArea *worksite = (WorkArea *)[objects firstObject];
+                        [worksite setObject:self.areaNameText.text forKey:@"name"];
+                        [worksite setObject:@([self.areaCodeText.text integerValue]) forKey:@"code"];
+                        [worksite setObject:self.areaAddressText.text forKey:@"address"];
+                        [worksite setObject:self.statusText.text forKey:@"status"];
+                        
                         if (selectedImage) {
                             CGSize newSize = CGSizeMake(CGRectGetWidth(self.imageView.frame), CGRectGetHeight(self.imageView.frame));
                             UIGraphicsBeginImageContext(newSize);
@@ -147,11 +144,11 @@
                             UIImage* newImage = UIGraphicsGetImageFromCurrentImageContext();
                             UIGraphicsEndImageContext();
                             NSData *imageData = UIImagePNGRepresentation(newImage);
-                            [worksite setObject:[PFFile fileWithName:@"Site.png" data:imageData] forKey:@"image"];
+                            [worksite setObject:[PFFile fileWithName:@"Area.png" data:imageData] forKey:@"image"];
                         }
                         
                         [self saveOrUpdateWorksite:worksite isForUpdate:YES];
-
+                        
                     } else {
                         [[DTAlertView alertViewWithTitle:@"Error" message:@"An unexpected error occured. Please try again." delegate:nil cancelButtonTitle:nil positiveButtonTitle:@"Okay"] show];
                     }
@@ -159,14 +156,15 @@
                     [[DTAlertView alertViewWithTitle:@"Error" message:error.localizedDescription delegate:nil cancelButtonTitle:nil positiveButtonTitle:@"Okay"] show];
                 }
             }];
+
         } else {
-            WorkSite *worksite = [[WorkSite alloc] init];
+            WorkArea *workarea = [[WorkArea alloc] init];
             
-            worksite.name = self.siteNameText.text;
-            worksite.code = @([self.siteCodeText.text integerValue]);
-            worksite.address = self.siteAddressText.text;
-            worksite.description = self.descriptionText.text;
-            worksite.user = [PFUser currentUser];
+            workarea.name = self.areaNameText.text;
+            workarea.code = @([self.areaCodeText.text integerValue]);
+            workarea.address = self.areaAddressText.text;
+            workarea.status = self.statusText.text;
+            workarea.worksite = self.worksite;
             
             if (selectedImage) {
                 CGSize newSize = CGSizeMake(CGRectGetWidth(self.imageView.frame), CGRectGetHeight(self.imageView.frame));
@@ -175,11 +173,11 @@
                 UIImage* newImage = UIGraphicsGetImageFromCurrentImageContext();
                 UIGraphicsEndImageContext();
                 NSData *imageData = UIImagePNGRepresentation(newImage);
-                worksite.image = [PFFile fileWithName:@"Site.png" data:imageData];
+                workarea.image = [PFFile fileWithName:@"Area.png" data:imageData];
             }
-
-            [self saveOrUpdateWorksite:worksite isForUpdate:NO];
+            [self saveOrUpdateWorksite:workarea isForUpdate:NO];
         }
+        
     } else {
         [[DTAlertView alertViewWithTitle:@"Invalid" message:@"Please fill up all fields" delegate:nil cancelButtonTitle:nil positiveButtonTitle:@"Okay"] show];
     }

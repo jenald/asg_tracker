@@ -18,6 +18,9 @@
 #define ASG_ADDWORKSITE_VC_IDENTIFIER @"addWorkSiteVC"
 #define ASG_ROOT_VC_IDENTIFIER @"rootVC"
 #define ASG_WORKSITE_DETAILS_VC_IDENTIFIER @"worksiteDetailsVC"
+#define ASG_WORKAREA_VC_IDENTIFIER @"workAreaVC"
+#define ASG_ADD_WORKAREA_VC_IDENTIFIER @"addWorkAreaVC"
+#define ASG_WORKAREA_DETAILS_VC_IDENTIFIER @"workAreaDetailsVC"
 
 #pragma mark - Worksite Push Identifiers
 

@@ -31,7 +31,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -42,12 +41,6 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
-}
-
-#pragma mark - Setup
-
-- (void)setupNavigationController {
-    
 }
 
 #pragma mark - Private Methods
@@ -70,11 +63,10 @@
 }
 
 #pragma mark - Actions
-
-- (IBAction)didTapAddBarButton:(id)sender {
-    
+- (IBAction)didTapLogoutButton:(id)sender {
+    [PFUser logOut];
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
-
 
 - (IBAction)segmentControlValueDidChange:(id)sender {
     switch (self.segmentControl.selectedSegmentIndex) {

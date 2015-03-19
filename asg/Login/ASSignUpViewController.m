@@ -24,7 +24,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.pod 'DTAlertView'
-    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -66,6 +65,10 @@
     } else {
         [[DTAlertView alertViewWithTitle:@"Invalid" message:@"Please enter a valid email address." delegate:nil cancelButtonTitle:@"Okay" positiveButtonTitle:nil] show];
     }
+}
+
+- (IBAction)didTapBackButton:(id)sender {
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 @end

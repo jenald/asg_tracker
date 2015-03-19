@@ -8,6 +8,7 @@
 
 #import "ASDetailsWorksiteViewController.h"
 #import "ASAddWorksiteViewController.h"
+#import "ASWorkAreasViewController.h"
 #import "Constants.h"
 #import "Global.h"
 #import "WorkSite.h"
@@ -65,7 +66,9 @@
 }
 
 - (IBAction)didTapWorkAreaButton:(id)sender {
-    
+    ASWorkAreasViewController *workArea = (ASWorkAreasViewController *)[Global loadViewControllerFromStoryboardIdentifier:ASG_WORKAREA_VC_IDENTIFIER];
+    workArea.worksite = self.worksite;
+    [self.navigationController pushViewController:workArea animated:YES];
 }
 
 @end

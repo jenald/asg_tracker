@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		038444961AB1762F00495C39 /* ASWorkAreasViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 038444951AB1762F00495C39 /* ASWorkAreasViewController.m */; };
+		038444991AB197B400495C39 /* ASAddWorkAreaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 038444981AB197B400495C39 /* ASAddWorkAreaViewController.m */; };
+		0384449C1AB19A4400495C39 /* WorkArea.m in Sources */ = {isa = PBXBuildFile; fileRef = 0384449B1AB19A4400495C39 /* WorkArea.m */; };
+		0384449F1AB1F66400495C39 /* ASDetailsWorkAreaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0384449E1AB1F66400495C39 /* ASDetailsWorkAreaViewController.m */; };
+		03D3C7771AADD30B001D01C9 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03D3C7761AADD30B001D01C9 /* Bolts.framework */; };
 		685692C507E3D54B38D27ACC /* libPods-asg.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CE83124903B1646A5893700 /* libPods-asg.a */; };
 		DE0D63CC1A9AE0DC0054C816 /* ASSignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DE0D63CB1A9AE0DC0054C816 /* ASSignUpViewController.m */; };
 		DE0D63D31A9AE9230054C816 /* Global.m in Sources */ = {isa = PBXBuildFile; fileRef = DE0D63D21A9AE9230054C816 /* Global.m */; };
@@ -16,7 +21,6 @@
 		DE0D64061A9B3E970054C816 /* UserInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = DE0D64051A9B3E970054C816 /* UserInfo.m */; };
 		DE0D647E1A9C0A1D0054C816 /* Position.m in Sources */ = {isa = PBXBuildFile; fileRef = DE0D647D1A9C0A1D0054C816 /* Position.m */; };
 		DE0D647F1A9C62AA0054C816 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DEC27E7B1A95C80E00EFEF6F /* Parse.framework */; };
-		DE0D64801A9C62C10054C816 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DEC27E941A95C93400EFEF6F /* Bolts.framework */; };
 		DE0D64821A9C62FC0054C816 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE0D64811A9C62FC0054C816 /* Social.framework */; };
 		DE0D64841A9C63010054C816 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE0D64831A9C63010054C816 /* Accounts.framework */; };
 		DE0D648B1A9DDECC0054C816 /* ASWorksiteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DE0D648A1A9DDECC0054C816 /* ASWorksiteViewController.m */; };
@@ -43,7 +47,15 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		2DC854BC25C97A431BE46BDA /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		038444941AB1762F00495C39 /* ASWorkAreasViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ASWorkAreasViewController.h; path = "Work Area/ASWorkAreasViewController.h"; sourceTree = "<group>"; };
+		038444951AB1762F00495C39 /* ASWorkAreasViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ASWorkAreasViewController.m; path = "Work Area/ASWorkAreasViewController.m"; sourceTree = "<group>"; };
+		038444971AB197B400495C39 /* ASAddWorkAreaViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ASAddWorkAreaViewController.h; path = "Work Area/ASAddWorkAreaViewController.h"; sourceTree = "<group>"; };
+		038444981AB197B400495C39 /* ASAddWorkAreaViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ASAddWorkAreaViewController.m; path = "Work Area/ASAddWorkAreaViewController.m"; sourceTree = "<group>"; };
+		0384449A1AB19A4400495C39 /* WorkArea.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WorkArea.h; path = Model/WorkArea.h; sourceTree = "<group>"; };
+		0384449B1AB19A4400495C39 /* WorkArea.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WorkArea.m; path = Model/WorkArea.m; sourceTree = "<group>"; };
+		0384449D1AB1F66400495C39 /* ASDetailsWorkAreaViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ASDetailsWorkAreaViewController.h; path = "Work Area/ASDetailsWorkAreaViewController.h"; sourceTree = "<group>"; };
+		0384449E1AB1F66400495C39 /* ASDetailsWorkAreaViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ASDetailsWorkAreaViewController.m; path = "Work Area/ASDetailsWorkAreaViewController.m"; sourceTree = "<group>"; };
+		03D3C7761AADD30B001D01C9 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
 		3C94282E497C53FB5DFA1687 /* Pods-asg.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-asg.debug.xcconfig"; path = "Pods/Target Support Files/Pods-asg/Pods-asg.debug.xcconfig"; sourceTree = "<group>"; };
 		4CE83124903B1646A5893700 /* libPods-asg.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-asg.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		53541AA6ABE644E8CF030119 /* Pods-asg.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-asg.release.xcconfig"; path = "Pods/Target Support Files/Pods-asg/Pods-asg.release.xcconfig"; sourceTree = "<group>"; };
@@ -95,7 +107,6 @@
 		DEC27E8E1A95C86300EFEF6F /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		DEC27E901A95C86A00EFEF6F /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		DEC27E921A95C87300EFEF6F /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
-		DEC27E941A95C93400EFEF6F /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Bolts.framework; path = ../../../Downloads/Parse/Bolts.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,9 +114,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				03D3C7771AADD30B001D01C9 /* Bolts.framework in Frameworks */,
 				DE0D64841A9C63010054C816 /* Accounts.framework in Frameworks */,
 				DE0D64821A9C62FC0054C816 /* Social.framework in Frameworks */,
-				DE0D64801A9C62C10054C816 /* Bolts.framework in Frameworks */,
 				DEC27E931A95C87300EFEF6F /* libsqlite3.dylib in Frameworks */,
 				DEC27E911A95C86A00EFEF6F /* libz.dylib in Frameworks */,
 				DEC27E8F1A95C86300EFEF6F /* SystemConfiguration.framework in Frameworks */,
@@ -124,6 +135,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		038444931AB175E700495C39 /* WorkArea */ = {
+			isa = PBXGroup;
+			children = (
+				038444941AB1762F00495C39 /* ASWorkAreasViewController.h */,
+				038444951AB1762F00495C39 /* ASWorkAreasViewController.m */,
+				038444971AB197B400495C39 /* ASAddWorkAreaViewController.h */,
+				038444981AB197B400495C39 /* ASAddWorkAreaViewController.m */,
+				0384449D1AB1F66400495C39 /* ASDetailsWorkAreaViewController.h */,
+				0384449E1AB1F66400495C39 /* ASDetailsWorkAreaViewController.m */,
+			);
+			name = WorkArea;
+			sourceTree = "<group>";
+		};
 		3330A63E9C7426C5C8B4363F /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -170,6 +194,8 @@
 				DE0D647D1A9C0A1D0054C816 /* Position.m */,
 				DE7E480B1AA06F5E008530D5 /* WorkSite.h */,
 				DE7E480C1AA06F5E008530D5 /* WorkSite.m */,
+				0384449A1AB19A4400495C39 /* WorkArea.h */,
+				0384449B1AB19A4400495C39 /* WorkArea.m */,
 			);
 			name = "Parse Objects";
 			sourceTree = "<group>";
@@ -236,6 +262,7 @@
 				DE7E47C81A9F4856008530D5 /* ASRootController.h */,
 				DE7E47C91A9F4856008530D5 /* ASRootController.m */,
 				DE0D64851A9DDAD20054C816 /* Worksite */,
+				038444931AB175E700495C39 /* WorkArea */,
 			);
 			name = "Tab Bar Controller";
 			sourceTree = "<group>";
@@ -250,9 +277,9 @@
 		DE89C7921A9387B100B1AB26 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				03D3C7761AADD30B001D01C9 /* Bolts.framework */,
 				DE0D64831A9C63010054C816 /* Accounts.framework */,
 				DE0D64811A9C62FC0054C816 /* Social.framework */,
-				DEC27E941A95C93400EFEF6F /* Bolts.framework */,
 				DEC27E921A95C87300EFEF6F /* libsqlite3.dylib */,
 				DEC27E901A95C86A00EFEF6F /* libz.dylib */,
 				DEC27E8E1A95C86300EFEF6F /* SystemConfiguration.framework */,
@@ -266,7 +293,6 @@
 				DEC27E7B1A95C80E00EFEF6F /* Parse.framework */,
 				DE89C7AA1A938D0D00B1AB26 /* System Frameworks */,
 				4CE83124903B1646A5893700 /* libPods-asg.a */,
-				2DC854BC25C97A431BE46BDA /* libPods.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -406,20 +432,24 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				038444991AB197B400495C39 /* ASAddWorkAreaViewController.m in Sources */,
 				DE0D63EF1A9B1DB30054C816 /* ASSignUpSuccessViewController.m in Sources */,
 				DE7E480D1AA06F5E008530D5 /* WorkSite.m in Sources */,
 				DE5F25761AADAB2E008F2FD1 /* ASResetPasswordViewController.m in Sources */,
 				DE7BCCE51AA5651400CEB9E0 /* ASAddWorksiteViewController.m in Sources */,
+				0384449C1AB19A4400495C39 /* WorkArea.m in Sources */,
 				DE29B9961A885BF300A2DC2E /* AppDelegate.m in Sources */,
 				DE29B9931A885BF300A2DC2E /* main.m in Sources */,
 				DE0D63D31A9AE9230054C816 /* Global.m in Sources */,
 				DE0D63E51A9AF3E10054C816 /* ASSignupDetailsTableViewController.m in Sources */,
+				038444961AB1762F00495C39 /* ASWorkAreasViewController.m in Sources */,
 				DE0D63E81A9AF4AA0054C816 /* ASLoginViewController.m in Sources */,
 				DE0D648B1A9DDECC0054C816 /* ASWorksiteViewController.m in Sources */,
 				DE0D647E1A9C0A1D0054C816 /* Position.m in Sources */,
 				DE0D64061A9B3E970054C816 /* UserInfo.m in Sources */,
 				DE62F5E61AA616270099092C /* ASDetailsWorksiteViewController.m in Sources */,
 				DE0D63CC1A9AE0DC0054C816 /* ASSignUpViewController.m in Sources */,
+				0384449F1AB1F66400495C39 /* ASDetailsWorkAreaViewController.m in Sources */,
 				DE7E47CA1A9F4856008530D5 /* ASRootController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

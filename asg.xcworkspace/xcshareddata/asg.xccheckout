@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>1F483229-8EE7-49F9-9936-41826DF3CD02</string>
+	<key>IDESourceControlProjectName</key>
+	<string>asg</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>66B183DC08074012F7C52458F8267BBC6CC9090D</key>
+		<string>https://github.com/TheCloudGroup/asg-tracker.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>asg.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>66B183DC08074012F7C52458F8267BBC6CC9090D</key>
+		<string>..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/TheCloudGroup/asg-tracker.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>66B183DC08074012F7C52458F8267BBC6CC9090D</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>66B183DC08074012F7C52458F8267BBC6CC9090D</string>
+			<key>IDESourceControlWCCName</key>
+			<string>asg-tracker</string>
+		</dict>
+	</array>
+</dict>
+</plist>

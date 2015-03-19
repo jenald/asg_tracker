@@ -34,6 +34,10 @@
 
 #pragma mark - Actions
 
+- (IBAction)didTapBackButton:(id)sender {
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
 - (IBAction)requestResetPassword:(id)sender {
     if ([Global isValidEmailString:self.emailAddressText.text]) {
         [MBProgressHUD showHUDAddedTo:self.view animated:YES];
