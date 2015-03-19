@@ -41,8 +41,8 @@
 - (IBAction)requestResetPassword:(id)sender {
     if ([Global isValidEmailString:self.emailAddressText.text]) {
         [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-        
-        [PFUser requestPasswordResetForEmailInBackground:self.emailAddressText.text block:^(BOOL succeeded, NSError *error) {
+
+        [PFUser requestPasswordResetForEmailInBackground:[self.emailAddressText.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]] block:^(BOOL succeeded, NSError *error) {
             [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
             if (!error) {
                 if (succeeded) {

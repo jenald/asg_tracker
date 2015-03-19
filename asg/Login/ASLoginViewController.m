@@ -64,7 +64,7 @@
     [MBProgressHUD HUDForView:self.view].labelText = @"Logging in..";
     
     PFQuery *query = [PFUser query];
-    [query whereKey:@"email" equalTo:self.emailAddressText.text];
+    [query whereKey:@"email" equalTo:[self.emailAddressText.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]]];
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (!error && objects.count > 0) {
             PFUser *user = (PFUser *)[objects firstObject];
