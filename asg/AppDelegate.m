@@ -40,13 +40,13 @@
     } else {
         ASRootController *worksiteViewController = (ASRootController *)[Global loadViewControllerFromStoryboardIdentifier:ASG_ROOT_VC_IDENTIFIER];
         self.window.rootViewController = worksiteViewController;
+        [[Global sharedInstance] checkUserTimeInStatus];
     }
     
     [Global isCurrentUserManager:^(BOOL isManager) {
         [[Global sharedInstance] setIsManager:isManager];
     }];
     
-    [[Global sharedInstance] checkUserTimeInStatus];
     
     [self.window makeKeyAndVisible];
     
