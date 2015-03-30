@@ -52,7 +52,20 @@
                 self.siteNameLabel.text = [worksite objectForKey:@"name"];
                 self.siteDescriptionText.text = [worksite objectForKey:@"description"];
                 if ([self.worksite objectForKey:@"image"]) {
-                    self.imageView.image = [UIImage imageWithData:[[worksite objectForKey:@"image"] getData]];
+                    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+                        
+                        //Call your function or whatever work that needs to be done
+                        //Code in this part is run on a background thread
+                        UIImage *image = [UIImage imageWithData:[[worksite objectForKey:@"image"] getData]];
+
+                        dispatch_async(dispatch_get_main_queue(), ^(void) {
+                            self.imageView.image = image;
+
+                            //Stop your activity indicator or anything else with the GUI
+                            //Code here is run on the main thread
+                            
+                        });
+                    });
                 }
                 self.navigationItem.title = [worksite objectForKey:@"name"];
             } else {

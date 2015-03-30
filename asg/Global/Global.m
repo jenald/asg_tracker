@@ -48,29 +48,25 @@ static Global *sharedMyManager = nil;
 }
 
 + (void)isCurrentUserManager:(myCompletion)completion {
-    PFQuery *userInfoQuery = [UserInfo query];
-    [userInfoQuery whereKey:@"user" equalTo:[PFUser currentUser]];
-    [userInfoQuery includeKey:@"position"];
-    NSArray *objects =  [userInfoQuery findObjects];
-    if (objects.count > 0) {
-        UserInfo *userInfo = (UserInfo *)[objects firstObject];
-        Position *position = (Position *)[userInfo objectForKey:@"position"];
-        if ([[position objectForKey:@"positionId"]  isEqual: @(1)]) {
-            completion(YES);
+    if ([PFUser currentUser]) {
+        PFQuery *userInfoQuery = [UserInfo query];
+        [userInfoQuery whereKey:@"user" equalTo:[PFUser currentUser]];
+        [userInfoQuery includeKey:@"position"];
+        NSArray *objects =  [userInfoQuery findObjects];
+        if (objects.count > 0) {
+            UserInfo *userInfo = (UserInfo *)[objects firstObject];
+            Position *position = (Position *)[userInfo objectForKey:@"position"];
+            if ([[position objectForKey:@"positionId"]  isEqual: @(1)]) {
+                completion(YES);
+            } else {
+                completion(NO);
+            }
         } else {
             completion(NO);
         }
     } else {
         completion(NO);
     }
-//    [userInfoQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-//        if (!error) {
-//            
-//        } else {
-//            completion(NO);
-//        }
-//    }];
-
 }
 
 @end
