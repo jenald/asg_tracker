@@ -24,6 +24,12 @@
     // Dispose of any resources that can be recreated.
 }
 
+#pragma mark - Public Methods
+
+- (void)selectTabBarAtIndex:(NSInteger)index {
+    self.selectedIndex = index;
+}
+
 /*
 #pragma mark - Navigation
 

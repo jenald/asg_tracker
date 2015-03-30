@@ -31,6 +31,8 @@
 		DE29B9A41A885BF300A2DC2E /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = DE29B9A21A885BF300A2DC2E /* LaunchScreen.xib */; };
 		DE5F25761AADAB2E008F2FD1 /* ASResetPasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DE5F25751AADAB2E008F2FD1 /* ASResetPasswordViewController.m */; };
 		DE62F5E61AA616270099092C /* ASDetailsWorksiteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DE62F5E51AA616270099092C /* ASDetailsWorksiteViewController.m */; };
+		DE6856C71AC405E200680528 /* Timelog.m in Sources */ = {isa = PBXBuildFile; fileRef = DE6856C61AC405E200680528 /* Timelog.m */; };
+		DE6856CB1AC40EEE00680528 /* ASCheckInOutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DE6856CA1AC40EEE00680528 /* ASCheckInOutViewController.m */; };
 		DE7BCCE51AA5651400CEB9E0 /* ASAddWorksiteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DE7BCCE41AA5651400CEB9E0 /* ASAddWorksiteViewController.m */; };
 		DE7E47CA1A9F4856008530D5 /* ASRootController.m in Sources */ = {isa = PBXBuildFile; fileRef = DE7E47C91A9F4856008530D5 /* ASRootController.m */; };
 		DE7E480D1AA06F5E008530D5 /* WorkSite.m in Sources */ = {isa = PBXBuildFile; fileRef = DE7E480C1AA06F5E008530D5 /* WorkSite.m */; };
@@ -90,6 +92,10 @@
 		DE5F25751AADAB2E008F2FD1 /* ASResetPasswordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ASResetPasswordViewController.m; path = Login/ASResetPasswordViewController.m; sourceTree = "<group>"; };
 		DE62F5E41AA616270099092C /* ASDetailsWorksiteViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ASDetailsWorksiteViewController.h; path = Worksite/ASDetailsWorksiteViewController.h; sourceTree = "<group>"; };
 		DE62F5E51AA616270099092C /* ASDetailsWorksiteViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ASDetailsWorksiteViewController.m; path = Worksite/ASDetailsWorksiteViewController.m; sourceTree = "<group>"; };
+		DE6856C51AC405E200680528 /* Timelog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Timelog.h; path = Model/Timelog.h; sourceTree = "<group>"; };
+		DE6856C61AC405E200680528 /* Timelog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Timelog.m; path = Model/Timelog.m; sourceTree = "<group>"; };
+		DE6856C91AC40EEE00680528 /* ASCheckInOutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ASCheckInOutViewController.h; path = CheckInOut/ASCheckInOutViewController.h; sourceTree = "<group>"; };
+		DE6856CA1AC40EEE00680528 /* ASCheckInOutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ASCheckInOutViewController.m; path = CheckInOut/ASCheckInOutViewController.m; sourceTree = "<group>"; };
 		DE7BCCE31AA5651400CEB9E0 /* ASAddWorksiteViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ASAddWorksiteViewController.h; path = Worksite/ASAddWorksiteViewController.h; sourceTree = "<group>"; };
 		DE7BCCE41AA5651400CEB9E0 /* ASAddWorksiteViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ASAddWorksiteViewController.m; path = Worksite/ASAddWorksiteViewController.m; sourceTree = "<group>"; };
 		DE7E47C81A9F4856008530D5 /* ASRootController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ASRootController.h; path = RootController/ASRootController.h; sourceTree = "<group>"; };
@@ -196,6 +202,8 @@
 				DE7E480C1AA06F5E008530D5 /* WorkSite.m */,
 				0384449A1AB19A4400495C39 /* WorkArea.h */,
 				0384449B1AB19A4400495C39 /* WorkArea.m */,
+				DE6856C51AC405E200680528 /* Timelog.h */,
+				DE6856C61AC405E200680528 /* Timelog.m */,
 			);
 			name = "Parse Objects";
 			sourceTree = "<group>";
@@ -256,6 +264,15 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		DE6856C81AC40E9F00680528 /* Check In */ = {
+			isa = PBXGroup;
+			children = (
+				DE6856C91AC40EEE00680528 /* ASCheckInOutViewController.h */,
+				DE6856CA1AC40EEE00680528 /* ASCheckInOutViewController.m */,
+			);
+			name = "Check In";
+			sourceTree = "<group>";
+		};
 		DE7E47C41A9F4776008530D5 /* Tab Bar Controller */ = {
 			isa = PBXGroup;
 			children = (
@@ -263,6 +280,7 @@
 				DE7E47C91A9F4856008530D5 /* ASRootController.m */,
 				DE0D64851A9DDAD20054C816 /* Worksite */,
 				038444931AB175E700495C39 /* WorkArea */,
+				DE6856C81AC40E9F00680528 /* Check In */,
 			);
 			name = "Tab Bar Controller";
 			sourceTree = "<group>";
@@ -445,10 +463,12 @@
 				038444961AB1762F00495C39 /* ASWorkAreasViewController.m in Sources */,
 				DE0D63E81A9AF4AA0054C816 /* ASLoginViewController.m in Sources */,
 				DE0D648B1A9DDECC0054C816 /* ASWorksiteViewController.m in Sources */,
+				DE6856C71AC405E200680528 /* Timelog.m in Sources */,
 				DE0D647E1A9C0A1D0054C816 /* Position.m in Sources */,
 				DE0D64061A9B3E970054C816 /* UserInfo.m in Sources */,
 				DE62F5E61AA616270099092C /* ASDetailsWorksiteViewController.m in Sources */,
 				DE0D63CC1A9AE0DC0054C816 /* ASSignUpViewController.m in Sources */,
+				DE6856CB1AC40EEE00680528 /* ASCheckInOutViewController.m in Sources */,
 				0384449F1AB1F66400495C39 /* ASDetailsWorkAreaViewController.m in Sources */,
 				DE7E47CA1A9F4856008530D5 /* ASRootController.m in Sources */,
 			);

@@ -65,7 +65,22 @@
     }];
 }
 
+- (void)deleteWorksite:(WorkSite *)worksite {
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    [MBProgressHUD HUDForView:self.view].labelText = @"Removing Worksite..";
+    [worksite deleteInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+        [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+        if (!error && succeeded) {
+            [[DTAlertView alertViewWithTitle:@"Success" message:@"You have successfully deleted a worksite" delegate:nil cancelButtonTitle:nil positiveButtonTitle:@"Okay"] show];
+            [self fetchCurrentUserWorksites];
+        } else {
+            [[DTAlertView alertViewWithTitle:@"Failed" message:@"An unexpected error occured. Please check your network connection and try again." delegate:nil cancelButtonTitle:nil positiveButtonTitle:@"Okay"] show];
+        }
+    }];
+}
+
 #pragma mark - Actions
+
 - (IBAction)didTapLogoutButton:(id)sender {
     [[DTAlertView alertViewUseBlock:^(DTAlertView *alertView, NSUInteger buttonIndex, NSUInteger cancelButtonIndex) {
         if (buttonIndex == 1) {
@@ -124,6 +139,16 @@
     self.detaitsViewController = (ASDetailsWorksiteViewController *)[Global loadViewControllerFromStoryboardIdentifier:ASG_WORKSITE_DETAILS_VC_IDENTIFIER];
     self.detaitsViewController.worksite = worksite;
     [self.navigationController pushViewController:self.detaitsViewController animated:YES];
+}
+
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
+    return YES;
+}
+
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        [self deleteWorksite:worksites[indexPath.row]];
+    }
 }
 
 @end

@@ -8,10 +8,17 @@
 
 #import "ASDetailsWorkAreaViewController.h"
 #import "ASAddWorkAreaViewController.h"
+#import <MBProgressHUD/MBProgressHUD.h>
+#import <DTAlertView/DTAlertView.h>
+#import "Timelog.h"
 #import "Global.h"
 #import "Constants.h"
 #import "WorkArea.h"
 #import "WorkSite.h"
+#import "ASRootController.h"
+#import "AppDelegate.h"
+
+@import UIKit;
 
 @interface ASDetailsWorkAreaViewController ()
 @property (weak, nonatomic) IBOutlet UILabel *areaIDLabel;
@@ -68,6 +75,23 @@
 
 - (IBAction)didTapCheckInButton:(id)sender {
     // TO DO : Check-in Functionality
+    Timelog *timeLog = [[Timelog alloc] init];
+    timeLog.user = [PFUser currentUser];
+    timeLog.workArea = self.workarea;
+    timeLog.checkInTime = [NSDate date];
+    timeLog.workSite = self.worksite;
+    
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    [timeLog saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+        [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+        if (!error && succeeded) {
+            self.navigationController.tabBarController.selectedIndex = 1;
+            [self.navigationController popToRootViewControllerAnimated:NO];
+            [[DTAlertView alertViewWithTitle:@"Success" message:@"You have successfully timed in." delegate:nil cancelButtonTitle:nil positiveButtonTitle:@"Okay"] show];
+        } else {
+            [[DTAlertView alertViewWithTitle:@"Time in failed" message:@"An unexpected error occured. Please check your network and try again." delegate:nil cancelButtonTitle:nil positiveButtonTitle:@"Okay"] show];
+        }
+    }];
 }
 
 - (IBAction)didTapEditButton:(id)sender {
