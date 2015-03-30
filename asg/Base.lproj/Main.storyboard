@@ -1658,6 +1658,7 @@
                         <outlet property="areaCodeLabel" destination="KfG-Dt-yX8" id="OJu-pE-vQA"/>
                         <outlet property="areaIDLabel" destination="9Zb-VD-hAZ" id="cxX-Pu-8v8"/>
                         <outlet property="areaStatusLabel" destination="dFJ-E1-TDD" id="tPo-MF-ZZy"/>
+                        <outlet property="checkInOutButton" destination="Pe5-Ng-jro" id="xQB-64-tn1"/>
                         <outlet property="imageView" destination="aqA-Ji-bt7" id="cfO-ZG-ih5"/>
                         <outlet property="siteIDLabel" destination="jag-fP-YIq" id="Nff-Ax-HGZ"/>
                     </connections>

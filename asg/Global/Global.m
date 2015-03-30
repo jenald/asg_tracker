@@ -10,10 +10,10 @@
 #import <Parse/Parse.h>
 #import "UserInfo.h"
 #import "Position.h"
+#import "Timelog.h"
 
 @implementation Global
 
-@synthesize isManager;
 static Global *sharedMyManager = nil;
 
 + (id)sharedInstance {
@@ -27,6 +27,7 @@ static Global *sharedMyManager = nil;
 - (id)init {
     if (self = [super init]) {
         self.isManager = NO;
+        self.isCheckedIn = NO;
     }
     return self;
 }
@@ -67,6 +68,26 @@ static Global *sharedMyManager = nil;
     } else {
         completion(NO);
     }
+}
+
+- (void)checkUserTimeInStatus {
+    PFQuery *query = [Timelog query];
+    [query whereKey:@"user" equalTo:[PFUser currentUser]];
+    [query whereKey:@"checkOutTime" equalTo:[NSNull null]];
+    [query includeKey:@"workSite"];
+    [query includeKey:@"workArea"];
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if (!error) {
+            if (objects.count > 0) {
+                self.timelog = [objects firstObject];
+                self.isCheckedIn = YES;
+            } else {
+                self.isCheckedIn = NO;
+            }
+        } else {
+            
+        }
+    }];
 }
 
 @end

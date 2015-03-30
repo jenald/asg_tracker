@@ -46,6 +46,8 @@
         [[Global sharedInstance] setIsManager:isManager];
     }];
     
+    [[Global sharedInstance] checkUserTimeInStatus];
+    
     [self.window makeKeyAndVisible];
     
     return YES;

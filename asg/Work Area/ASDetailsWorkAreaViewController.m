@@ -26,6 +26,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *siteIDLabel;
 @property (weak, nonatomic) IBOutlet UILabel *areaStatusLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
+@property (weak, nonatomic) IBOutlet UIButton *checkInOutButton;
 
 @end
 
@@ -38,6 +39,12 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+    
+    if ([[Global sharedInstance] isCheckedIn]) {
+        [self.checkInOutButton setTitle:@"Check-out" forState:UIControlStateNormal];
+    } else {
+        [self.checkInOutButton setTitle:@"Check-in" forState:UIControlStateNormal];
+    }
     
     if (![[Global sharedInstance] isManager]) {
         self.navigationItem.rightBarButtonItem = nil;
@@ -74,24 +81,30 @@
 #pragma mark - Actions
 
 - (IBAction)didTapCheckInButton:(id)sender {
-    // TO DO : Check-in Functionality
-    Timelog *timeLog = [[Timelog alloc] init];
-    timeLog.user = [PFUser currentUser];
-    timeLog.workArea = self.workarea;
-    timeLog.checkInTime = [NSDate date];
-    timeLog.workSite = self.worksite;
-    
-    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    [timeLog saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-        [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
-        if (!error && succeeded) {
-            self.navigationController.tabBarController.selectedIndex = 1;
-            [self.navigationController popToRootViewControllerAnimated:NO];
-            [[DTAlertView alertViewWithTitle:@"Success" message:@"You have successfully timed in." delegate:nil cancelButtonTitle:nil positiveButtonTitle:@"Okay"] show];
-        } else {
-            [[DTAlertView alertViewWithTitle:@"Time in failed" message:@"An unexpected error occured. Please check your network and try again." delegate:nil cancelButtonTitle:nil positiveButtonTitle:@"Okay"] show];
-        }
-    }];
+    if ([[Global sharedInstance] isCheckedIn]) {
+        self.navigationController.tabBarController.selectedIndex = 1;
+    } else {
+        Timelog *timeLog = [[Timelog alloc] init];
+        timeLog.user = [PFUser currentUser];
+        timeLog.workArea = self.workarea;
+        timeLog.checkInTime = [NSDate date];
+        timeLog.workSite = self.worksite;
+        
+        [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        [timeLog saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+            [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+            if (!error && succeeded) {
+                [[Global sharedInstance] setTimelog:timeLog];
+                [[Global sharedInstance] setIsCheckedIn:YES];
+                [[Global sharedInstance] checkUserTimeInStatus];
+                self.navigationController.tabBarController.selectedIndex = 1;
+                [self.navigationController popToRootViewControllerAnimated:NO];
+                [[DTAlertView alertViewWithTitle:@"Success" message:@"You have successfully timed in." delegate:nil cancelButtonTitle:nil positiveButtonTitle:@"Okay"] show];
+            } else {
+                [[DTAlertView alertViewWithTitle:@"Time in failed" message:@"An unexpected error occured. Please check your network and try again." delegate:nil cancelButtonTitle:nil positiveButtonTitle:@"Okay"] show];
+            }
+        }];
+    }
 }
 
 - (IBAction)didTapEditButton:(id)sender {
