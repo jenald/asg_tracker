@@ -11,6 +11,8 @@
 		038444991AB197B400495C39 /* ASAddWorkAreaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 038444981AB197B400495C39 /* ASAddWorkAreaViewController.m */; };
 		0384449C1AB19A4400495C39 /* WorkArea.m in Sources */ = {isa = PBXBuildFile; fileRef = 0384449B1AB19A4400495C39 /* WorkArea.m */; };
 		0384449F1AB1F66400495C39 /* ASDetailsWorkAreaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0384449E1AB1F66400495C39 /* ASDetailsWorkAreaViewController.m */; };
+		03BEE2021AC9930900551FD4 /* NSString+ASAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 03BEE2011AC9930900551FD4 /* NSString+ASAdditions.m */; };
+		03BEE2071AC993BF00551FD4 /* NSDate+ASAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 03BEE2061AC993BF00551FD4 /* NSDate+ASAdditions.m */; };
 		03D3C7771AADD30B001D01C9 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03D3C7761AADD30B001D01C9 /* Bolts.framework */; };
 		685692C507E3D54B38D27ACC /* libPods-asg.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CE83124903B1646A5893700 /* libPods-asg.a */; };
 		DE0D63CC1A9AE0DC0054C816 /* ASSignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DE0D63CB1A9AE0DC0054C816 /* ASSignUpViewController.m */; };
@@ -57,6 +59,10 @@
 		0384449B1AB19A4400495C39 /* WorkArea.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WorkArea.m; path = Model/WorkArea.m; sourceTree = "<group>"; };
 		0384449D1AB1F66400495C39 /* ASDetailsWorkAreaViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ASDetailsWorkAreaViewController.h; path = "Work Area/ASDetailsWorkAreaViewController.h"; sourceTree = "<group>"; };
 		0384449E1AB1F66400495C39 /* ASDetailsWorkAreaViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ASDetailsWorkAreaViewController.m; path = "Work Area/ASDetailsWorkAreaViewController.m"; sourceTree = "<group>"; };
+		03BEE2001AC9930900551FD4 /* NSString+ASAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSString+ASAdditions.h"; path = "Categories/NSString/NSString+ASAdditions.h"; sourceTree = "<group>"; };
+		03BEE2011AC9930900551FD4 /* NSString+ASAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSString+ASAdditions.m"; path = "Categories/NSString/NSString+ASAdditions.m"; sourceTree = "<group>"; };
+		03BEE2051AC993BF00551FD4 /* NSDate+ASAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSDate+ASAdditions.h"; path = "Categories/NSDate/NSDate+ASAdditions.h"; sourceTree = "<group>"; };
+		03BEE2061AC993BF00551FD4 /* NSDate+ASAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSDate+ASAdditions.m"; path = "Categories/NSDate/NSDate+ASAdditions.m"; sourceTree = "<group>"; };
 		03D3C7761AADD30B001D01C9 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
 		3C94282E497C53FB5DFA1687 /* Pods-asg.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-asg.debug.xcconfig"; path = "Pods/Target Support Files/Pods-asg/Pods-asg.debug.xcconfig"; sourceTree = "<group>"; };
 		4CE83124903B1646A5893700 /* libPods-asg.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-asg.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -154,6 +160,33 @@
 			name = WorkArea;
 			sourceTree = "<group>";
 		};
+		03BEE1FE1AC992B500551FD4 /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				03BEE2041AC993A900551FD4 /* NSDate */,
+				03BEE1FF1AC992C100551FD4 /* NSString */,
+			);
+			name = Categories;
+			sourceTree = "<group>";
+		};
+		03BEE1FF1AC992C100551FD4 /* NSString */ = {
+			isa = PBXGroup;
+			children = (
+				03BEE2001AC9930900551FD4 /* NSString+ASAdditions.h */,
+				03BEE2011AC9930900551FD4 /* NSString+ASAdditions.m */,
+			);
+			name = NSString;
+			sourceTree = "<group>";
+		};
+		03BEE2041AC993A900551FD4 /* NSDate */ = {
+			isa = PBXGroup;
+			children = (
+				03BEE2051AC993BF00551FD4 /* NSDate+ASAdditions.h */,
+				03BEE2061AC993BF00551FD4 /* NSDate+ASAdditions.m */,
+			);
+			name = NSDate;
+			sourceTree = "<group>";
+		};
 		3330A63E9C7426C5C8B4363F /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -166,6 +199,7 @@
 		DE0D63D01A9AE8E80054C816 /* Global */ = {
 			isa = PBXGroup;
 			children = (
+				03BEE1FE1AC992B500551FD4 /* Categories */,
 				DE0D63D11A9AE9230054C816 /* Global.h */,
 				DE0D63D21A9AE9230054C816 /* Global.m */,
 				DE0D63D91A9AF1A10054C816 /* Constants.h */,
@@ -467,12 +501,14 @@
 				038444991AB197B400495C39 /* ASAddWorkAreaViewController.m in Sources */,
 				DE0D63EF1A9B1DB30054C816 /* ASSignUpSuccessViewController.m in Sources */,
 				DE7E480D1AA06F5E008530D5 /* WorkSite.m in Sources */,
+				03BEE2071AC993BF00551FD4 /* NSDate+ASAdditions.m in Sources */,
 				DE5F25761AADAB2E008F2FD1 /* ASResetPasswordViewController.m in Sources */,
 				DE7BCCE51AA5651400CEB9E0 /* ASAddWorksiteViewController.m in Sources */,
 				0384449C1AB19A4400495C39 /* WorkArea.m in Sources */,
 				DE29B9961A885BF300A2DC2E /* AppDelegate.m in Sources */,
 				DE29B9931A885BF300A2DC2E /* main.m in Sources */,
 				DE0D63D31A9AE9230054C816 /* Global.m in Sources */,
+				03BEE2021AC9930900551FD4 /* NSString+ASAdditions.m in Sources */,
 				DE0D63E51A9AF3E10054C816 /* ASSignupDetailsTableViewController.m in Sources */,
 				038444961AB1762F00495C39 /* ASWorkAreasViewController.m in Sources */,
 				DE0D63E81A9AF4AA0054C816 /* ASLoginViewController.m in Sources */,

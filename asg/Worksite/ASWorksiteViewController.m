@@ -17,6 +17,8 @@
 #import "Position.h"
 #import "ASDetailsWorksiteViewController.h"
 #import "ASLoginViewController.h"
+#import "Timelog.h"
+#import "NSDate+ASAdditions.h"
 
 @interface ASWorksiteViewController () <UITableViewDataSource, UITableViewDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -27,6 +29,8 @@
 
 @implementation ASWorksiteViewController {
     NSArray *worksites;
+    NSArray *recentCheckIns;
+    BOOL isOnWorksites;
 }
 
 - (void)viewDidLoad {
@@ -36,10 +40,17 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+    
     if (![[Global sharedInstance] isManager]) {
         self.navigationItem.rightBarButtonItem = nil;
     }
-    [self fetchCurrentUserWorksites];
+    
+    if (self.segmentControl.selectedSegmentIndex == 0) {
+        [self fetchCurrentUserWorksites];
+    }
+    if (![[Global sharedInstance] isManager]) {
+        [self fetchRecentCheckIns];
+    }
 }
 
 - (void)didReceiveMemoryWarning {
@@ -50,6 +61,7 @@
 #pragma mark - Private Methods
 
 - (void)fetchCurrentUserWorksites {
+    isOnWorksites = YES;
     PFQuery *worksitesQuery = [WorkSite query];
     [worksitesQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (!error) {
@@ -63,6 +75,25 @@
             [[DTAlertView alertViewWithTitle:@"Request Failed" message:error.localizedDescription delegate:nil cancelButtonTitle:nil positiveButtonTitle:@"Okay"] show];
         }
     }];
+}
+
+- (void)fetchRecentCheckIns {
+    isOnWorksites = NO;
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    PFQuery *timelogQuery = [Timelog query];
+    [timelogQuery whereKey:@"user" equalTo:[PFUser currentUser]];
+    [timelogQuery whereKey:@"checkOutTime" notEqualTo:[NSNull null]];
+    [timelogQuery orderByDescending:@"checkInTime"];
+    [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+    [timelogQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if (!error) {
+            recentCheckIns = objects;
+            [self.tableView reloadData];
+        } else {
+            [[DTAlertView alertViewWithTitle:@"Request Failed" message:error.localizedDescription delegate:nil cancelButtonTitle:nil positiveButtonTitle:@"Okay"] show];
+        }
+    }];
+    
 }
 
 - (void)deleteWorksite:(WorkSite *)worksite {
@@ -95,11 +126,11 @@
 - (IBAction)segmentControlValueDidChange:(id)sender {
     switch (self.segmentControl.selectedSegmentIndex) {
         case 0:{
-            
+            [self fetchCurrentUserWorksites];
         }
             break;
         case 1: {
-            
+            [self fetchRecentCheckIns];
         }
             break;
         default:
@@ -115,7 +146,10 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return worksites.count;
+    if (isOnWorksites) {
+        return worksites.count;
+    }
+    return recentCheckIns.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -125,9 +159,14 @@
     if (!cell) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
     }
-    
-    WorkSite *worksite = (WorkSite *)worksites[indexPath.row];
-    cell.textLabel.text = [worksite objectForKey:@"name"];
+    if (isOnWorksites) {
+        WorkSite *worksite = (WorkSite *)worksites[indexPath.row];
+        cell.textLabel.text = [worksite objectForKey:@"name"];
+    } else {
+        Timelog *timelog = (Timelog *)recentCheckIns[indexPath.row];
+        NSDate *checkOutDate = (NSDate *)[timelog objectForKey:@"checkOutTime"];
+        cell.textLabel.text = [checkOutDate getMonthDayYear];
+    }
     
     return cell;
 }
@@ -135,10 +174,14 @@
 #pragma mark - UITableViewDelegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    WorkSite *worksite = (WorkSite *)worksites[indexPath.row];
-    self.detaitsViewController = (ASDetailsWorksiteViewController *)[Global loadViewControllerFromStoryboardIdentifier:ASG_WORKSITE_DETAILS_VC_IDENTIFIER];
-    self.detaitsViewController.worksite = worksite;
-    [self.navigationController pushViewController:self.detaitsViewController animated:YES];
+    if (isOnWorksites) {
+        WorkSite *worksite = (WorkSite *)worksites[indexPath.row];
+        self.detaitsViewController = (ASDetailsWorksiteViewController *)[Global loadViewControllerFromStoryboardIdentifier:ASG_WORKSITE_DETAILS_VC_IDENTIFIER];
+        self.detaitsViewController.worksite = worksite;
+        [self.navigationController pushViewController:self.detaitsViewController animated:YES];
+    } else {
+        [[DTAlertView alertViewWithTitle:@"On Going" message:@"Still working on this functionality. Please wait for the next build release. Thank You." delegate:nil cancelButtonTitle:nil positiveButtonTitle:@"Okay"] show];
+    }
 }
 
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
