@@ -24,6 +24,7 @@
 #define ASG_TIMELOG_DETAILS_VC_IDENTIFIER @"timelogVC"
 #define ASG_ASSET_VC_IDENTIFIER @"assetVC"
 #define ASG_ADD_ASSET_VC_IDENTIFIER @"addAssetVC"
+#define ASG_ASSET_DETAILS_VC_IDENTIFIER @"assetDetailsVC"
 
 #pragma mark - Worksite Push Identifiers
 
