@@ -21,6 +21,7 @@
 #define ASG_WORKAREA_VC_IDENTIFIER @"workAreaVC"
 #define ASG_ADD_WORKAREA_VC_IDENTIFIER @"addWorkAreaVC"
 #define ASG_WORKAREA_DETAILS_VC_IDENTIFIER @"workAreaDetailsVC"
+#define ASG_TIMELOG_DETAILS_VC_IDENTIFIER @"timelogVC"
 
 #pragma mark - Worksite Push Identifiers
 

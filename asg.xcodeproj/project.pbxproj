@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		037C65C91ACBC86800CD607A /* ASTimeLogTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 037C65C81ACBC86800CD607A /* ASTimeLogTableViewController.m */; };
 		038444961AB1762F00495C39 /* ASWorkAreasViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 038444951AB1762F00495C39 /* ASWorkAreasViewController.m */; };
 		038444991AB197B400495C39 /* ASAddWorkAreaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 038444981AB197B400495C39 /* ASAddWorkAreaViewController.m */; };
 		0384449C1AB19A4400495C39 /* WorkArea.m in Sources */ = {isa = PBXBuildFile; fileRef = 0384449B1AB19A4400495C39 /* WorkArea.m */; };
@@ -51,6 +52,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		037C65C71ACBC86800CD607A /* ASTimeLogTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ASTimeLogTableViewController.h; path = Timelog/ASTimeLogTableViewController.h; sourceTree = "<group>"; };
+		037C65C81ACBC86800CD607A /* ASTimeLogTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ASTimeLogTableViewController.m; path = Timelog/ASTimeLogTableViewController.m; sourceTree = "<group>"; };
 		038444941AB1762F00495C39 /* ASWorkAreasViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ASWorkAreasViewController.h; path = "Work Area/ASWorkAreasViewController.h"; sourceTree = "<group>"; };
 		038444951AB1762F00495C39 /* ASWorkAreasViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ASWorkAreasViewController.m; path = "Work Area/ASWorkAreasViewController.m"; sourceTree = "<group>"; };
 		038444971AB197B400495C39 /* ASAddWorkAreaViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ASAddWorkAreaViewController.h; path = "Work Area/ASAddWorkAreaViewController.h"; sourceTree = "<group>"; };
@@ -147,6 +150,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		037C65C61ACBC83A00CD607A /* Timelog */ = {
+			isa = PBXGroup;
+			children = (
+				037C65C71ACBC86800CD607A /* ASTimeLogTableViewController.h */,
+				037C65C81ACBC86800CD607A /* ASTimeLogTableViewController.m */,
+			);
+			name = Timelog;
+			sourceTree = "<group>";
+		};
 		038444931AB175E700495C39 /* WorkArea */ = {
 			isa = PBXGroup;
 			children = (
@@ -315,6 +327,7 @@
 				DE0D64851A9DDAD20054C816 /* Worksite */,
 				038444931AB175E700495C39 /* WorkArea */,
 				DE6856C81AC40E9F00680528 /* Check In */,
+				037C65C61ACBC83A00CD607A /* Timelog */,
 			);
 			name = "Tab Bar Controller";
 			sourceTree = "<group>";

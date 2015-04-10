@@ -10,7 +10,7 @@
 
 @class WorkSite,WorkArea, PFUser;
 
-@interface Timelog : PFObject
+@interface Timelog : PFObject <PFSubclassing>
 + (NSString *)parseClassName;
 
 @property (retain) WorkArea *workArea;

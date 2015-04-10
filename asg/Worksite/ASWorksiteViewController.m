@@ -19,6 +19,7 @@
 #import "ASLoginViewController.h"
 #import "Timelog.h"
 #import "NSDate+ASAdditions.h"
+#import "ASTimeLogTableViewController.h"
 
 @interface ASWorksiteViewController () <UITableViewDataSource, UITableViewDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -165,7 +166,7 @@
     } else {
         Timelog *timelog = (Timelog *)recentCheckIns[indexPath.row];
         NSDate *checkOutDate = (NSDate *)[timelog objectForKey:@"checkOutTime"];
-        cell.textLabel.text = [checkOutDate getMonthDayYear];
+        cell.textLabel.text = [checkOutDate stringWithDateFormat:@"MMM d, YYYY EEEE"];
     }
     
     return cell;
@@ -180,6 +181,7 @@
         self.detaitsViewController.worksite = worksite;
         [self.navigationController pushViewController:self.detaitsViewController animated:YES];
     } else {
+        
         [[DTAlertView alertViewWithTitle:@"On Going" message:@"Still working on this functionality. Please wait for the next build release. Thank You." delegate:nil cancelButtonTitle:nil positiveButtonTitle:@"Okay"] show];
     }
 }
