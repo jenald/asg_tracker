@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6250" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="AddAssetCell" id="G8s-ec-Mxs" customClass="AddAssetTableViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="G8s-ec-Mxs" id="Vkb-Xw-SvA">
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="hWA-PC-NnM">
+                        <rect key="frame" x="8" y="13" width="100" height="17"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="100" id="GbP-Hl-RMk"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="12"/>
+                        <color key="textColor" red="0.62745098040000002" green="0.80392156859999997" blue="0.41176470590000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Xw6-Ct-7FZ">
+                        <rect key="frame" x="118" y="12" width="199" height="17"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <textInputTraits key="textInputTraits"/>
+                    </textField>
+                </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                <constraints>
+                    <constraint firstItem="Xw6-Ct-7FZ" firstAttribute="trailing" secondItem="Vkb-Xw-SvA" secondAttribute="trailingMargin" constant="5" id="16p-RQ-h4g"/>
+                    <constraint firstItem="Xw6-Ct-7FZ" firstAttribute="leading" secondItem="hWA-PC-NnM" secondAttribute="trailing" constant="10" id="U5a-PR-9Wk"/>
+                    <constraint firstItem="hWA-PC-NnM" firstAttribute="centerY" secondItem="Xw6-Ct-7FZ" secondAttribute="centerY" constant="0.5" id="VMo-zE-hD4"/>
+                    <constraint firstItem="hWA-PC-NnM" firstAttribute="leading" secondItem="Vkb-Xw-SvA" secondAttribute="leadingMargin" id="bC6-eO-mDa"/>
+                    <constraint firstAttribute="centerY" secondItem="hWA-PC-NnM" secondAttribute="centerY" id="bQM-jf-pxo"/>
+                    <constraint firstItem="hWA-PC-NnM" firstAttribute="height" secondItem="Xw6-Ct-7FZ" secondAttribute="height" id="lyh-ne-vOP"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="assetTextField" destination="Xw6-Ct-7FZ" id="Qsw-TA-KP9"/>
+                <outlet property="assetTitleLabel" destination="hWA-PC-NnM" id="E7U-fG-39V"/>
+            </connections>
+            <point key="canvasLocation" x="426" y="-69"/>
+        </tableViewCell>
+    </objects>
+</document>
