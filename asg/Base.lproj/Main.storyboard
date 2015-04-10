@@ -955,7 +955,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LPd-OK-ZNA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="692.5" y="-858.5"/>
+            <point key="canvasLocation" x="692.5" y="-876.5"/>
         </scene>
         <!--Add Worksite View Controller-->
         <scene sceneID="LfK-1m-JHO">
@@ -2241,6 +2241,9 @@
                     <navigationItem key="navigationItem" id="bCr-nu-buc">
                         <barButtonItem key="rightBarButtonItem" title="Edit" id="LJ2-cj-uav">
                             <color key="tintColor" red="0.57254901960000004" green="0.7725490196" blue="0.33333333329999998" alpha="1" colorSpace="calibratedRGB"/>
+                            <connections>
+                                <action selector="didTapEditButton:" destination="NaX-zL-rRX" id="kqU-t4-8h5"/>
+                            </connections>
                         </barButtonItem>
                     </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>

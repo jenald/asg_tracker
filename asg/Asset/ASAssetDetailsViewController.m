@@ -9,6 +9,8 @@
 #import "ASAssetDetailsViewController.h"
 #import "Asset.h"
 #import "Global.h"
+#import <DTAlertView/DTAlertView.h>
+
 @interface ASAssetDetailsViewController ()
 @property (weak, nonatomic) IBOutlet UITextField *name;
 @property (weak, nonatomic) IBOutlet UITextField *number;
@@ -67,4 +69,13 @@
         }
     }];
     
-}@end
+}
+
+#pragma mark - Actions
+
+- (IBAction)didTapEditButton:(id)sender {
+    [[[DTAlertView alloc] initWithTitle:@"On Going" message:@"Still in development. Please wait for the next build release. Thanks" delegate:nil cancelButtonTitle:nil positiveButtonTitle:@"Okay"] show];
+}
+
+
+@end
