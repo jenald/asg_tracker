@@ -9,5 +9,5 @@
 #import <Foundation/Foundation.h>
 
 @interface NSDate (ASAdditions)
-- (NSString *)getMonthDayYear;
+- (NSString *)stringWithDateFormat:(NSString *)dateFormat;
 @end

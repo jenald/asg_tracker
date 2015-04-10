@@ -9,9 +9,9 @@
 #import "NSDate+ASAdditions.h"
 
 @implementation NSDate (ASAdditions)
-- (NSString *)getMonthDayYear {
+- (NSString *)stringWithDateFormat:(NSString *)dateFormat {
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-    [formatter setDateFormat:@"MMM d, YYYY EEEE"];
+    [formatter setDateFormat:dateFormat];
     
     NSString *stringFromDate = [formatter stringFromDate:self];
     
