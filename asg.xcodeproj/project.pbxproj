@@ -7,11 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0378908C1AD3B897005641AB /* ASAssetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0378908B1AD3B897005641AB /* ASAssetViewController.m */; };
+		0378908F1AD3BDE1005641AB /* ASAddASsetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0378908E1AD3BDE1005641AB /* ASAddASsetViewController.m */; };
+		037890931AD3C20F005641AB /* AddAssetTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 037890921AD3C20F005641AB /* AddAssetTableViewCell.m */; };
+		037890951AD3C5CB005641AB /* AddAssetCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 037890941AD3C5CB005641AB /* AddAssetCell.xib */; };
 		037C65C91ACBC86800CD607A /* ASTimeLogTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 037C65C81ACBC86800CD607A /* ASTimeLogTableViewController.m */; };
 		038444961AB1762F00495C39 /* ASWorkAreasViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 038444951AB1762F00495C39 /* ASWorkAreasViewController.m */; };
 		038444991AB197B400495C39 /* ASAddWorkAreaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 038444981AB197B400495C39 /* ASAddWorkAreaViewController.m */; };
 		0384449C1AB19A4400495C39 /* WorkArea.m in Sources */ = {isa = PBXBuildFile; fileRef = 0384449B1AB19A4400495C39 /* WorkArea.m */; };
 		0384449F1AB1F66400495C39 /* ASDetailsWorkAreaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0384449E1AB1F66400495C39 /* ASDetailsWorkAreaViewController.m */; };
+		03A513F31AD511B3002A0070 /* Asset.m in Sources */ = {isa = PBXBuildFile; fileRef = 03A513F21AD511B3002A0070 /* Asset.m */; };
+		03A513F61AD7C333002A0070 /* ASAssetDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 03A513F51AD7C333002A0070 /* ASAssetDetailsViewController.m */; };
 		03BEE2021AC9930900551FD4 /* NSString+ASAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 03BEE2011AC9930900551FD4 /* NSString+ASAdditions.m */; };
 		03BEE2071AC993BF00551FD4 /* NSDate+ASAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 03BEE2061AC993BF00551FD4 /* NSDate+ASAdditions.m */; };
 		03D3C7771AADD30B001D01C9 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03D3C7761AADD30B001D01C9 /* Bolts.framework */; };
@@ -52,6 +58,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0378908A1AD3B897005641AB /* ASAssetViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ASAssetViewController.h; path = Asset/ASAssetViewController.h; sourceTree = "<group>"; };
+		0378908B1AD3B897005641AB /* ASAssetViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ASAssetViewController.m; path = Asset/ASAssetViewController.m; sourceTree = "<group>"; };
+		0378908D1AD3BDE1005641AB /* ASAddASsetViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ASAddASsetViewController.h; path = Asset/ASAddASsetViewController.h; sourceTree = "<group>"; };
+		0378908E1AD3BDE1005641AB /* ASAddASsetViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ASAddASsetViewController.m; path = Asset/ASAddASsetViewController.m; sourceTree = "<group>"; };
+		037890911AD3C20F005641AB /* AddAssetTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AddAssetTableViewCell.h; path = Asset/AddAssetTableViewCell.h; sourceTree = "<group>"; };
+		037890921AD3C20F005641AB /* AddAssetTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AddAssetTableViewCell.m; path = Asset/AddAssetTableViewCell.m; sourceTree = "<group>"; };
+		037890941AD3C5CB005641AB /* AddAssetCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddAssetCell.xib; sourceTree = "<group>"; };
 		037C65C71ACBC86800CD607A /* ASTimeLogTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ASTimeLogTableViewController.h; path = Timelog/ASTimeLogTableViewController.h; sourceTree = "<group>"; };
 		037C65C81ACBC86800CD607A /* ASTimeLogTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ASTimeLogTableViewController.m; path = Timelog/ASTimeLogTableViewController.m; sourceTree = "<group>"; };
 		038444941AB1762F00495C39 /* ASWorkAreasViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ASWorkAreasViewController.h; path = "Work Area/ASWorkAreasViewController.h"; sourceTree = "<group>"; };
@@ -62,6 +75,10 @@
 		0384449B1AB19A4400495C39 /* WorkArea.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WorkArea.m; path = Model/WorkArea.m; sourceTree = "<group>"; };
 		0384449D1AB1F66400495C39 /* ASDetailsWorkAreaViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ASDetailsWorkAreaViewController.h; path = "Work Area/ASDetailsWorkAreaViewController.h"; sourceTree = "<group>"; };
 		0384449E1AB1F66400495C39 /* ASDetailsWorkAreaViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ASDetailsWorkAreaViewController.m; path = "Work Area/ASDetailsWorkAreaViewController.m"; sourceTree = "<group>"; };
+		03A513F11AD511B3002A0070 /* Asset.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Asset.h; path = Model/Asset.h; sourceTree = "<group>"; };
+		03A513F21AD511B3002A0070 /* Asset.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Asset.m; path = Model/Asset.m; sourceTree = "<group>"; };
+		03A513F41AD7C333002A0070 /* ASAssetDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ASAssetDetailsViewController.h; path = Asset/ASAssetDetailsViewController.h; sourceTree = "<group>"; };
+		03A513F51AD7C333002A0070 /* ASAssetDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ASAssetDetailsViewController.m; path = Asset/ASAssetDetailsViewController.m; sourceTree = "<group>"; };
 		03BEE2001AC9930900551FD4 /* NSString+ASAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSString+ASAdditions.h"; path = "Categories/NSString/NSString+ASAdditions.h"; sourceTree = "<group>"; };
 		03BEE2011AC9930900551FD4 /* NSString+ASAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSString+ASAdditions.m"; path = "Categories/NSString/NSString+ASAdditions.m"; sourceTree = "<group>"; };
 		03BEE2051AC993BF00551FD4 /* NSDate+ASAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSDate+ASAdditions.h"; path = "Categories/NSDate/NSDate+ASAdditions.h"; sourceTree = "<group>"; };
@@ -150,6 +167,30 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		037890861AD3B6CD005641AB /* Asset */ = {
+			isa = PBXGroup;
+			children = (
+				037890901AD3C1EF005641AB /* Asset Cell */,
+				0378908A1AD3B897005641AB /* ASAssetViewController.h */,
+				0378908B1AD3B897005641AB /* ASAssetViewController.m */,
+				0378908D1AD3BDE1005641AB /* ASAddASsetViewController.h */,
+				0378908E1AD3BDE1005641AB /* ASAddASsetViewController.m */,
+				03A513F41AD7C333002A0070 /* ASAssetDetailsViewController.h */,
+				03A513F51AD7C333002A0070 /* ASAssetDetailsViewController.m */,
+			);
+			name = Asset;
+			sourceTree = "<group>";
+		};
+		037890901AD3C1EF005641AB /* Asset Cell */ = {
+			isa = PBXGroup;
+			children = (
+				037890911AD3C20F005641AB /* AddAssetTableViewCell.h */,
+				037890921AD3C20F005641AB /* AddAssetTableViewCell.m */,
+				037890941AD3C5CB005641AB /* AddAssetCell.xib */,
+			);
+			name = "Asset Cell";
+			sourceTree = "<group>";
+		};
 		037C65C61ACBC83A00CD607A /* Timelog */ = {
 			isa = PBXGroup;
 			children = (
@@ -250,6 +291,8 @@
 				0384449B1AB19A4400495C39 /* WorkArea.m */,
 				DE6856C51AC405E200680528 /* Timelog.h */,
 				DE6856C61AC405E200680528 /* Timelog.m */,
+				03A513F11AD511B3002A0070 /* Asset.h */,
+				03A513F21AD511B3002A0070 /* Asset.m */,
 			);
 			name = "Parse Objects";
 			sourceTree = "<group>";
@@ -326,6 +369,7 @@
 				DE7E47C91A9F4856008530D5 /* ASRootController.m */,
 				DE0D64851A9DDAD20054C816 /* Worksite */,
 				038444931AB175E700495C39 /* WorkArea */,
+				037890861AD3B6CD005641AB /* Asset */,
 				DE6856C81AC40E9F00680528 /* Check In */,
 				037C65C61ACBC83A00CD607A /* Timelog */,
 			);
@@ -454,6 +498,7 @@
 			files = (
 				DE29B99F1A885BF300A2DC2E /* Main.storyboard in Resources */,
 				DE29B9A41A885BF300A2DC2E /* LaunchScreen.xib in Resources */,
+				037890951AD3C5CB005641AB /* AddAssetCell.xib in Resources */,
 				DE29B9A11A885BF300A2DC2E /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -515,25 +560,31 @@
 				DE0D63EF1A9B1DB30054C816 /* ASSignUpSuccessViewController.m in Sources */,
 				DE7E480D1AA06F5E008530D5 /* WorkSite.m in Sources */,
 				03BEE2071AC993BF00551FD4 /* NSDate+ASAdditions.m in Sources */,
+				0378908C1AD3B897005641AB /* ASAssetViewController.m in Sources */,
 				DE5F25761AADAB2E008F2FD1 /* ASResetPasswordViewController.m in Sources */,
+				037C65C91ACBC86800CD607A /* ASTimeLogTableViewController.m in Sources */,
 				DE7BCCE51AA5651400CEB9E0 /* ASAddWorksiteViewController.m in Sources */,
 				0384449C1AB19A4400495C39 /* WorkArea.m in Sources */,
 				DE29B9961A885BF300A2DC2E /* AppDelegate.m in Sources */,
+				03A513F61AD7C333002A0070 /* ASAssetDetailsViewController.m in Sources */,
 				DE29B9931A885BF300A2DC2E /* main.m in Sources */,
 				DE0D63D31A9AE9230054C816 /* Global.m in Sources */,
 				03BEE2021AC9930900551FD4 /* NSString+ASAdditions.m in Sources */,
 				DE0D63E51A9AF3E10054C816 /* ASSignupDetailsTableViewController.m in Sources */,
 				038444961AB1762F00495C39 /* ASWorkAreasViewController.m in Sources */,
 				DE0D63E81A9AF4AA0054C816 /* ASLoginViewController.m in Sources */,
+				037890931AD3C20F005641AB /* AddAssetTableViewCell.m in Sources */,
 				DE0D648B1A9DDECC0054C816 /* ASWorksiteViewController.m in Sources */,
 				DE6856C71AC405E200680528 /* Timelog.m in Sources */,
 				DE0D647E1A9C0A1D0054C816 /* Position.m in Sources */,
 				DE0D64061A9B3E970054C816 /* UserInfo.m in Sources */,
 				DE62F5E61AA616270099092C /* ASDetailsWorksiteViewController.m in Sources */,
+				03A513F31AD511B3002A0070 /* Asset.m in Sources */,
 				DE0D63CC1A9AE0DC0054C816 /* ASSignUpViewController.m in Sources */,
 				DE6856CB1AC40EEE00680528 /* ASCheckInOutViewController.m in Sources */,
 				0384449F1AB1F66400495C39 /* ASDetailsWorkAreaViewController.m in Sources */,
 				DE7E47CA1A9F4856008530D5 /* ASRootController.m in Sources */,
+				0378908F1AD3BDE1005641AB /* ASAddASsetViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
